@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <link rel="stylesheet" href="Header.css">
+    <link rel="stylesheet" href="Footer.css">
+    <link rel="stylesheet" href="ToanBoSanPham.css">
+    <link rel="stylesheet" href="TrangChu.css">
+    <title>Title</title>
+</head>
+<body>
+    <header id="header" v-bind:class="{clickOnHeader: isClick}">
+        <div  class="header_logo">
+            <img src="HinhAnh/Logo/Logo2.png" alt="Logo">
+        </div>
+        <div class="navigation">
+            <a href="#" class="nav_home">TRANG CHỦ</a>
+            <a href="#" class="nav_auction">ĐẤU GIÁ</a>
+            <a href="#" class="nav_auction">DANH MỤC</a>
+            <a href="#" class="nav_auction">GIỚI THIỆU</a>
+            <a href="#" class="how_to_buy">TRỢ GIÚP</a>
+        </div>
+<!--        <div  class="header_logo">-->
+<!--            <img src="HinhAnh/Logo/Logo1.png" alt="Logo">-->
+<!--        </div>-->
+        <div class="header_right">
+            <div id="search">
+                <button class="searchIcon"  @click="handleClickSearch"><img src="HinhAnh/Icon/Search.png" alt=""></button>
+                <div class="searchDrop" v-bind:class="{clicked: isClick}">
+                    <div class="cancelSearch" >
+                        <button @click="handleClickX">X</button>
+                    </div>
+                    <div class="groupSearchDrop">
+                        <select name="" id="">
+                        <option value="0">Tất cả</option>
+                        <option value="1">Thẻ bo góc</option>
+                        <option value="2">Lightstick</option>
+                        <option value="3">Poster</option>
+                    </select>
+                    <input type="text" placeholder="Tìm kiếm">
+                    <button class="searchBtn">Tìm kiếm</button>
+                    </div>
+                    
+                </div>
+
+            </div>
+            <div class="cart">
+                <img src="HinhAnh/Icon/Cart.png" alt="">
+                <div class="count_cart">0</div>
+            </div>
+            <div class="inform">
+                <img src="HinhAnh/Icon/Bell.png" alt="">
+            </div>
+            <div class="header_btn">
+                <a href="#" class="register">ĐĂNG KÝ</a>
+                <a href="#" class="login">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </header>
+<div class="allProduct">
+    <div class="leftAllProduct">
+        <div class="sidenav">
+            <a href="#">Danh mục</a>
+            <a href="#about">Card</a>
+            <a href="#services">Lightstick</a>
+            <a href="#clients">Album</a>
+            <a href="#contact">Ticket</a>
+        </div>
+    </div>
+    <div class="rightAllProduct">
+        <div class="recommendProducts">
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+            <div class="recommendProduct">
+                <img src="HinhAnh/Product/Product1.png" alt="">
+                <div class="nameProduct">PhotoCart BTS</div>
+                <div class="priceProduct">53.000 VND</div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <div class="noi-dung about">
+            <h2>Về Chúng Tôi</h2>
+            <p>Lorem ipsumdolor sit...</p>
+            <!--            <ul class="social-icon">-->
+            <!--                <li><a href=""><i class="fa fa-facebook"></i></a></li>-->
+            <!--                <li><a href=""><i class="fa fa-twitter"></i></a></li>-->
+            <!--                <li><a href=""><i class="fa fa-instagram"></i></a></li>-->
+            <!--                <li><a href=""><i class="fa fa-youtube"></i></a></li>-->
+            <!--            </ul>-->
+        </div>
+        <div class="noi-dung links">
+            <h2>Đường Dẫn</h2>
+            <ul>
+                <li><a href="#">Trang Chủ</a></li>
+                <li><a href="#">Về Chúng Tôi</a></li>
+                <li><a href="#">Thông Tin Liên Lạc</a></li>
+                <li><a href="#">Dịch Vụ</a></li>
+                <li><a href="#">Điều Kiện Chính Sách</a></li>
+            </ul>
+        </div>
+        <div class="noi-dung contact">
+            <h2>Thông Tin Liên Hệ</h2>
+            <ul class="info">
+                <li>
+                    <span><i class="fa fa-map-marker"></i></span>
+                    <span>Đường Số 1<br />
+                         Quận 1, Thành Phố Hồ Chí Minh<br />
+                         Việt Nam</span>
+                </li>
+                <li>
+                    <span><i class="fa fa-phone"></i></span>
+                    <p><a href="#">+84 123 456 789</a>
+                        <br />
+                        <a href="#">+84 987 654 321</a></p>
+                </li>
+                <li>
+                    <span><i class="fa fa-envelope"></i></span>
+                    <p><a href="#">diachiemail@gmail.com</a></p>
+                </li>
+                <li>
+                    <!--                    <form class="form">-->
+                    <!--                        <input type="email" class="form__field" placeholder="Đăng Ký Subscribe Email" />-->
+                    <!--                        <button type="button" class="btn btn&#45;&#45;primary  uppercase">Gửi</button>-->
+                    <!--                    </form>-->
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+</body>
+<script>
+        var searchManage= new Vue({
+    el: '#header',
+    data(){
+        return{
+            isClick: false,
+        }
+    },
+    methods:{
+        handleClickSearch(e){
+            this.isClick= true;
+        }, 
+        handleClickX(e){
+            this.isClick= false;
+        }
+    }
+})
+</script>
+</html>

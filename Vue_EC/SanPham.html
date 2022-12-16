@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <link rel="stylesheet" href="Header.css">
+  <link rel="stylesheet" href="SanPham.css">
+    <title>Sản phẩm</title>
+</head>
+<body>
+    <header id="header" v-bind:class="{clickOnHeader: isClick}">
+        <div  class="header_logo">
+            <img src="HinhAnh/Logo/Logo2.png" alt="Logo">
+        </div>
+        <div class="navigation">
+            <a href="#" class="nav_home">TRANG CHỦ</a>
+            <a href="#" class="nav_auction">ĐẤU GIÁ</a>
+            <a href="#" class="nav_auction">DANH MỤC</a>
+            <a href="#" class="nav_auction">GIỚI THIỆU</a>
+            <a href="#" class="how_to_buy">TRỢ GIÚP</a>
+        </div>
+<!--        <div  class="header_logo">-->
+<!--            <img src="HinhAnh/Logo/Logo1.png" alt="Logo">-->
+<!--        </div>-->
+        <div class="header_right">
+            <div id="search">
+                <button class="searchIcon"  @click="handleClickSearch"><img src="HinhAnh/Icon/Search.png" alt=""></button>
+                <div class="searchDrop" v-bind:class="{clicked: isClick}">
+                    <div class="cancelSearch" >
+                        <button @click="handleClickX">X</button>
+                    </div>
+                    <div class="groupSearchDrop">
+                        <select name="" id="">
+                        <option value="0">Tất cả</option>
+                        <option value="1">Thẻ bo góc</option>
+                        <option value="2">Lightstick</option>
+                        <option value="3">Poster</option>
+                    </select>
+                    <input type="text" placeholder="Tìm kiếm">
+                    <button class="searchBtn">Tìm kiếm</button>
+                    </div>
+                    
+                </div>
+
+            </div>
+            <div class="cart">
+                <img src="HinhAnh/Icon/Cart.png" alt="">
+                <div class="count_cart">0</div>
+            </div>
+            <div class="inform">
+                <img src="HinhAnh/Icon/Bell.png" alt="">
+            </div>
+            <div class="header_btn">
+                <a href="#" class="register">ĐĂNG KÝ</a>
+                <a href="#" class="login">ĐĂNG NHẬP</a>
+            </div>
+        </div>
+    </header>
+    <div class="details">
+      <div class="leftDetail">
+          <div class="gallery">
+<!--              <div class="prev">❮</div>-->
+              <div class="container">
+                            <div class="mySlide">
+                              <img src="HinhAnh/Home_Background/Background.png" alt="">
+                            </div>
+                  <!--          <div class="mySlide">-->
+                  <!--            <img src="HinhAnh/Home_Background/Background.png" alt="">-->
+                  <!--          </div>-->
+                  <!--          <div class="mySlide">-->
+                  <!--            <img src="HinhAnh/Home_Background/Background.png" alt="">-->
+                  <!--          </div>-->
+              </div>
+
+<!--              <div class="next">❯</div>-->
+          </div>
+        <div class="row">
+          <div class="column"><img src="HinhAnh/Home_Background/Background.png" alt="" class="demo"></div>
+          <div class="column"><img src="HinhAnh/Home_Background/Background.png" alt="" class="demo"></div>
+          <div class="column"><img src="HinhAnh/Home_Background/Background.png" alt="" class="demo"></div>
+        </div>
+          <div class="detailProduct">
+              <p class="descriptTitle">Chi tiết sản phẩm:</p>
+              <ul>
+                  <li>Số lượng: 15</li>
+                  <li>Kích thước: tùy chọn</li>
+                  <li>Gửi từ: Thành phố Hồ Chí Minh</li>
+              </ul>
+          </div>
+          <div class="description">
+              <p class="descriptTitle">Mô tả sản phẩm:</p>
+              <p class="descriptContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</p>
+          </div>
+      </div>
+      <div class="centerDetail">
+
+              <div class="name">LISA MV LALISA- Bộ Thẻ Card Ảnh Lisa TRONG MV Lalisa </div>
+              <div class="rate_bidCount">
+                  <div class="starRate">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </div>
+                  <div class="bidCount">3 đã đấu giá</div>
+              </div>
+              <div class="timeLeft">
+                  <p><span>Thời gian: </span>03d 45h 3m </p>
+                  <div class="bid">Giá khởi điểm:
+                      <div class="price">50.398 VND</div>
+                      <div class="placeBid"><input type="text" placeholder="Mức giá/ 1 sản phẩm..."></div>
+                      <!--                  <div class="instruction">*Giá đặt ra phải lớn hơn hoặc bằng giá khởi điểm</div>-->
+                      <div class="Qty">
+                          <div class="labelQty">Số lượng:</div>
+                          <div class="buyQty">
+                              <button class="substractBtn">-</button>
+                              <div>1</div>
+                              <button class="plusBtn">+</button>
+                          </div>
+                      </div>
+                      <!--              <div class="bidQty"><input type="text" placeholder="Số lượng..."></div>-->
+                      <!--              <div class="bidCount">[3 bids]</div>-->
+                      <div class="Btn"><button class="largeBtn placeBidBtn">Đấu giá</button></div>
+                      <div class="Btn"><button class="largeBtn add2CartBtn">Thêm vào giỏ hàng</button></div>
+
+                  </div>
+
+              </div>
+
+          <div class="shop">
+              <div class="shopProfile">
+                  <span class="profileIcon"><img src="HinhAnh/Icon/Profile.png" alt=""></span>
+                  <span class="shopName">Đinh Tấn Phúc Hi</span>
+              </div>
+              <div class="shopRate_Flow">
+                  <div class="shopRate">
+                      <div>
+                          <span class="avgRate">0/5</span>
+                          <span class="fa fa-star checked"></span>
+                      </div>
+                      <span class="titleFlow">4+</span>
+                  </div>
+                  <div class="shopFlow">
+                      <span class="amountFlow">0</span>
+                      <span class="titleFlow">Sản phẩm</span>
+<!--                      <button class="shopBtn">Theo dõi</button>-->
+                  </div>
+              </div>
+              <div class="btnFlow">
+                  <button class="shopBtn">Xem shop</button>
+              </div>
+              <div class="shopGuarantees">
+                  <div class="shopGuarantee">
+                      <img src="HinhAnh/Icon/Like.png" alt="">
+                      <span>Hoàn tiền 100% nêu hàng giả</span>
+                  </div>
+                  <div class="shopGuarantee">
+                      <img src="HinhAnh/Icon/Check.png" alt="">
+                      <span>Mở hộp kiểm tra nhận hàng</span>
+                  </div>
+                  <div class="shopGuarantee">
+                      <img src="HinhAnh/Icon/Convert.png" alt="">
+                      <span>Trả hàng trong 7 ngày nếu lỗi</span>
+                  </div>
+              </div>
+
+<!--              <div class="shopBtn">-->
+<!--                  <button>Xem shop</button>-->
+<!--                  <button>Theo dõi</button>-->
+<!--              </div>-->
+          </div>
+      </div>
+    </div>
+    <div class="feedBack">
+        <div class="left_feedBack">
+            <div>rate</div>
+        </div>
+        <div class="right_feedBack">
+            <div class="fBackTitle">
+                <div class="middle">Đánh giá chi tiết</div>
+            </div>
+            <div class="userFBack">
+                <div class="userInfo" >
+                    <div class="userName">NguyeVinhThien</div>
+                    <div class="starRate">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </div>
+                <div class="contentFBack">
+                    <div class="leftIcon">+</div>
+                    <div class="middleContent">truong dai học su pham kỹ thuat</div>
+                    <div class="rightDate">25/12/2022</div>
+                </div>
+            </div>
+            <div class="userFBack">
+                <div class="userInfo" >
+                    <div class="userName">Đỗ Trung Đức</div>
+                    <div class="starRate">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </div>
+                <div class="contentFBack">
+                    <div class="leftIcon">+</div>
+                    <div class="middleContent">Good</div>
+                    <div class="rightDate">15/02/2022</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var searchManage= new Vue({
+el: '#header',
+data(){
+    return{
+        isClick: false,
+    }
+},
+methods:{
+    handleClickSearch(e){
+        this.isClick= true;
+    }, 
+    handleClickX(e){
+        this.isClick= false;
+    }
+}
+})
+</script>
+</html>

@@ -1,0 +1,122 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    height: 100vh;
+}
+
+.clear{
+    clear: none;
+}
+
+.container-left{
+    background-color: #FFEDE1;
+    float: left;
+    width: 40%;
+    height: 100%;
+    position:relative ;
+}
+
+.container-right{
+    background-color: #FFFFFF;
+    float: left;
+    width: 60%;
+    height: 100%;
+}
+
+.login-logo {
+    left: 25%;
+    width: 50%;
+    top: -5%;
+    display: block;
+    position: absolute;
+}
+
+.login-image-1 {
+    bottom: 7%;
+    left:35%;
+    width: 80%;
+    position: absolute;
+}
+
+.line-login {
+    width: 100%;
+    height: 1px;
+    border-width:0;
+    color:#FFCEAE;
+    background-color:#FFCEAE;
+    position: absolute;
+    top: 93%;
+}
+
+.container-right form {
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 19px 40px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+
+}
+.container-right h1{
+    text-align: center;
+    color: #F47458;
+    font-family: Poppins, sans-serif;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    padding: 20px 0;
+    border-bottom: 0;
+}
+
+.container-right .sign-in{
+    font-family: Poppins, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    margin-top: 15px;
+}
+
+.container-right .welcome{
+    font-family: Poppins, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: rgba(0,0,0,0.5);
+}
+
+.container-right form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
