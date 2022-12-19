@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
 // import DangNhap from './components/DangNhap/DangNhap.vue'
 export default {
   // name: 'app',

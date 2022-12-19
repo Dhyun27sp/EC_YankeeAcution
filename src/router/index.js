@@ -2,9 +2,11 @@ import { createRouter, createWebHistory } from "vue-router";
 // import Vue from 'vue';
 
 
-import TrangChu from '../components/TrangChu/TrangChu.vue'
-import DangNhap from '../components/DangNhap/DangNhap.vue'
-import DangKy from '../components/DangKy/DangKy.vue'
+import TrangChu from '../components/TrangChu.vue'
+import DangNhap from '../components/DangNhap.vue'
+import DangKy from '../components/DangKy.vue'
+import SanPham from '../components/SanPham.vue'
+import GioHang from '../components/GioHang.vue'
 
 const routes= [
     {path: '/',
@@ -24,6 +26,16 @@ const routes= [
     path: '/DangKy',
     name: "DangKy",
     component: DangKy
+   },
+   {
+    path: '/SanPham',
+    name: "SanPham",
+    component: SanPham
+   },
+   {
+    path: '/GioHang',
+    name: "GioHang",
+    component: GioHang
    }
 
    

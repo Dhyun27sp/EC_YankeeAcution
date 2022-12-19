@@ -1,67 +1,47 @@
-<template>
-   <div class = "container">
-            <div class="container-left">
-                <img class="login-logo" src="./Image/Logo.png" alt="logo">
-                <img class="login-image-1"  src="./Image/Background_Login.png" alt="man">
+vue <template>
+  <div class = "container">
+    <div class="container-left">
+        <img class="login-logo" src="../components/HinhAnh/Image/Logo.png" alt="logo">
+        <img class="login-image-1"  src="../components/HinhAnh/Image/Background_Login.png" alt="man">
+    </div>
+    <div class="container-right">
+
+        <form method="post">
+            <h1>Yankee Auction</h1>
+            <p class="welcome">Welcome back !!!</p>
+            <p class="sign-in">Sign in</p>
+            <div class="txt_field">
+                <input type="text" required>
+                <span></span>
+                <label>Email</label>
             </div>
-            <div class="container-right">
-        
-                <form method="post" id="formDangKy">
-                    <h1>Yankee Auction</h1>
-                    <p class="welcome">Welcome back !!!</p>
-                    <p class="sign-in" style="font-size: 30px">Create an account</p>
-                    <div class="flex_txt_field">
-                        <div class="txt_field"  >
-                            <input v-model="firstName" type="text" required >
-                            <span></span>
-                            <label>First name</label>
-                        </div>
-                        <div class="txt_field" >
-                            <input v-model="lastName" type="text" required>
-                            <span></span>
-                            <label>Last name</label>
-                        </div>
-                    </div>
-        
-                    <div class="txt_field" id="txtEmail">
-                        <input v-model="email" type="text" required>
-                        <span></span>
-                        <label>Email</label>
-                    </div>
-        
-                    <div class="flex_txt_field">
-                        <div class="txt_field"  >
-                            <input v-model="pass" type="text" required>
-                            <span></span>
-                            <label>Password</label>
-                        </div>
-                        <div class="txt_field" >
-                            <input type="text" required>
-                            <span></span>
-                            <label>Confirm password</label>
-                        </div>
-                    </div>
-                    <div class="note">By Creating an account, you agree to our User
-                        Agreement and acknowledge reading our User Privacy.</div>
-                    <input type="submit" value="Create an account">
-                    <div class="signup_link">
-                        Already a member ? <router-link to="/DangNhap">Đăng ký</router-link>
-                    </div>
-                </form>
+            <div class="txt_field">
+                <input type="password" required>
+                <span></span>
+                <label>Password</label>
             </div>
-            <div class="clear"></div>
-            <hr class="line-login">
-        </div>
+            <div class="pass">Forgot Password?</div>
+
+            <input type="submit" value="Login">
+            <div class="signup_link">
+                I don’t have an account ? <router-link to="/DangKy">Đăng ký</router-link>
+            </div>
+        </form>
+    </div>
+    <div class="clear"></div>
+    <hr class="line-login">
+</div>
+
 </template>
 
 <script>
 export default {
-    name: 'DangKy'
+    name:'DangNhap'
+
 }
 </script>
 
-<style>
-
+<style scoped>
 *{
     padding: 0;
     margin: 0;
@@ -154,10 +134,14 @@ export default {
     padding: 0 40px;
     box-sizing: border-box;
 }
+
+
+
+
 form .txt_field{
     position: relative;
     border-bottom: 2px solid #adadad;
-    margin: 20px 0;
+    margin: 30px 0;
 }
 .txt_field input{
     width: 100%;
@@ -167,19 +151,6 @@ form .txt_field{
     border: none;
     background: none;
     outline: none;
-}
-.flex_txt_field {
-    display: flex;
-    justify-content: space-between;
-}
-
-#txtEmail{
-    margin: 0 0;
-}
-
-
-.flex_txt_field .txt_field{
-    width: 48%;
 }
 .txt_field label{
     position: absolute;
@@ -210,13 +181,10 @@ form .txt_field{
 .txt_field input:valid ~ span::before{
     width: 100%;
 }
-.note{
-    /*margin: -5px 0 20px 5px;*/
+.pass{
+    margin: -5px 0 20px 5px;
     color: #a6a6a6;
-    /*cursor: pointer;*/
-    font-size: 11px;
-    /*margin: 10px 0;*/
-    margin-bottom: 10px;
+    cursor: pointer;
 }
 .pass:hover{
     text-decoration: underline;
@@ -243,7 +211,6 @@ input[type="submit"]:hover{
     font-family: Poppins, sans-serif;
     font-size: 11px;
     color: #666666;
-    margin: 10px 0;
 }
 .signup_link a{
     color: #F47458;
@@ -252,6 +219,5 @@ input[type="submit"]:hover{
 .signup_link a:hover{
     text-decoration: underline;
 }
-
 
 </style>

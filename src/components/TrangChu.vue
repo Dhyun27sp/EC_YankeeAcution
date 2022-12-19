@@ -2,7 +2,7 @@
      <div class="head">
         <header id="header" v-bind:class="{clickOnHeader: isClick}">
             <div  class="header_logo">
-                <img src="./Logo/Logo2.png" alt="Logo">
+                <img src="../components/HinhAnh/Logo/Logo2.png" alt="Logo">
             </div>
             <div class="navigation">
                 <a href="#" class="nav_home">TRANG CHỦ</a>
@@ -11,10 +11,9 @@
                 <a href="#" class="nav_auction">GIỚI THIỆU</a>
                 <a href="#" class="how_to_buy">TRỢ GIÚP</a>
             </div>
-  
             <div class="header_right">
                 <div id="search">
-                    <button class="searchIcon"  @click="handleClickSearch"><img src="./Icon/Search.png" alt=""></button>
+                    <button class="searchIcon"  @click="handleClickSearch"><img src="../components/HinhAnh/Icon/Search.png" alt=""></button>
                     <div class="searchDrop" v-bind:class="{clicked: isClick}">
                         <div class="cancelSearch" >
                             <button @click="handleClickX">X</button>
@@ -34,11 +33,11 @@
     
                 </div>
                 <div class="cart">
-                    <img src="./Icon/Cart.png" alt="">
+                    <img src="../components/HinhAnh/Icon/Cart.png" alt="">
                     <div class="count_cart">0</div>
                 </div>
                 <div class="inform">
-                    <img src="./Icon/Bell.png" alt="">
+                    <img src="../components/HinhAnh/Icon/Bell.png" alt="">
                 </div>
                 <div class="header_btn">
                     <router-link class="register"  to="/DangKy">ĐĂNG KÝ</router-link>
@@ -50,7 +49,7 @@
             </div>
         </header>
     
-        <img class="imgBackground" src="./Home_Background/Background1.jpg" alt="">
+        <img class="imgBackground" src="../components/HinhAnh/Home_Background/Background1.jpg" alt="">
         <div class="slogan">
             <p class="slogan_subject">Lưu giữ kỷ niệm <br>cho Idol của bạn</p>
             <p class="slogan-content">KPOP AUCTION - Cung cấp card bo góc mọi thể loại, <br> hãy sưu tầm card bo góc và poster tuyệt đẹp
@@ -61,23 +60,23 @@
         <div class="title">Danh mục</div>
         <div class="catalog_detail">
             <div class="tag_Catalog">
-                <img src="./Catalog/Kpop.png" alt="">
+                <img src="../components/HinhAnh/Catalog/Kpop.png" alt="">
                 <p>Card</p>
             </div>
             <div class="tag_Catalog">
-                <img src="./Catalog/Kpop.png" alt="">
+                <img src="../components/HinhAnh/Catalog/Kpop.png" alt="">
                 <p>Poster</p>
             </div>
             <div class="tag_Catalog">
-                <img src="./Catalog/Kpop.png" alt="">
+                <img src="../components/HinhAnh/Catalog/Kpop.png" alt="">
                 <p>Lightstick</p>
             </div>
             <div class="tag_Catalog">
-                <img src="./Catalog/Kpop.png" alt="">
+                <img src="../components/HinhAnh/Catalog/Kpop.png" alt="">
                 <p>Album</p>
             </div>
             <div class="tag_Catalog">
-                <img src="./Catalog/Kpop.png" alt="">
+                <img src="../components/HinhAnh/Catalog/Kpop.png" alt="">
                 <p>Calendar</p>
             </div>
    
@@ -93,11 +92,11 @@
                 <button class="button" @mouseover="handleMouseOver($event, 4)" v-bind:class="{buttonActive: isMouseOver4}"><span>Calender </span><span class="arrowRight" v-bind:class="{arrowActive: isMouseOver4}">&#187;</span></button>
             </div>
             <div class="rightTopic">
-                <img class="imgHotProduct" v-bind:class="{imgDisplay: imgDefault}" src="./Product/Product1.png" alt="">
-                <img class="imgHotProduct" v-bind:class="{imgDisplay: isMouseOver1}" src="./Home_Background/Background1.jpg" alt="">
-                <img class="imgHotProduct" v-bind:class="{imgDisplay: isMouseOver2}" src="./Product/Product1.png" alt="">
-                <img class="imgHotProduct" v-bind:class="{imgDisplay: isMouseOver3}" src="./Home_Background/Background1.jpg" alt="">
-                <img class="imgHotProduct" v-bind:class="{imgDisplay: isMouseOver4}" src="./Product/Product1.png" alt="">
+                <img class="imgHotProduct" v-bind:class="{imgDisplay: imgDefault}" src="../components/HinhAnh/Product/Product1.png" alt="">
+                <img class="imgHotProduct" v-bind:class="{imgDisplay: isMouseOver1}" src="../components/HinhAnh/Home_Background/Background1.jpg" alt="">
+                <img class="imgHotProduct" v-bind:class="{imgDisplay: isMouseOver2}" src="../components/HinhAnh/Product/Product1.png" alt="">
+                <img class="imgHotProduct" v-bind:class="{imgDisplay: isMouseOver3}" src="../components/HinhAnh/Home_Background/Background1.jpg" alt="">
+                <img class="imgHotProduct" v-bind:class="{imgDisplay: isMouseOver4}" src="../components/HinhAnh/Product/Product1.png" alt="">
 
             </div>
         </div>
@@ -107,37 +106,37 @@
         <div class="title">Gợi ý</div>
         <div class="recommendProducts">
             <div class="recommendProduct">
-                    <img src="./Product/Product1.png" alt="">
+                    <img src="../components/HinhAnh/Product/Product1.png" alt="">
                     <div class="nameProduct">PhotoCart BTS</div>
                     <div class="priceProduct">53.000 VND</div>
                 </div>
             <div class="recommendProduct">
-                    <img src="./Product/Product1.png" alt="">
+                    <img src="../components/HinhAnh/Product/Product1.png" alt="">
                     <div class="nameProduct">PhotoCart BTS</div>
                     <div class="priceProduct">53.000 VND</div>
                 </div>
             <div class="recommendProduct">
-                <img src="./Product/Product1.png" alt="">
+                <img src="../components/HinhAnh/Product/Product1.png" alt="">
                 <div class="nameProduct">PhotoCart BTS</div>
                 <div class="priceProduct">53.000 VND</div>
             </div>
             <div class="recommendProduct">
-                <img src="./Product/Product1.png" alt="">
+                <img src="../components/HinhAnh/Product/Product1.png" alt="">
                 <div class="nameProduct">PhotoCart BTS</div>
                 <div class="priceProduct">53.000 VND</div>
             </div>
             <div class="recommendProduct">
-                <img src="./Product/Product1.png" alt="">
+                <img src="../components/HinhAnh/Product/Product1.png" alt="">
                 <div class="nameProduct">PhotoCart BTS</div>
                 <div class="priceProduct">53.000 VND</div>
             </div>
             <div class="recommendProduct">
-                <img src="./Product/Product1.png" alt="">
+                <img src="../components/HinhAnh/Product/Product1.png" alt="">
                 <div class="nameProduct">PhotoCart BTS</div>
                 <div class="priceProduct">53.000 VND</div>
             </div>
             <div class="recommendProduct">
-                <img src="./Product/Product1.png" alt="">
+                <img src="../components/HinhAnh/Product/Product1.png" alt="">
                 <div class="nameProduct">PhotoCart BTS</div>
                 <div class="priceProduct">53.000 VND</div>
             </div>
