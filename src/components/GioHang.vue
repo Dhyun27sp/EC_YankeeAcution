@@ -1,5 +1,5 @@
 <template>
-    
+    <body>
         <header id="header" v-bind:class="{clickOnHeader: isClick}">
         <div  class="header_logo">
             <img src="../components/HinhAnh/Logo/Logo2.png" alt="Logo">
@@ -45,10 +45,10 @@
             </div>
         </div>
     </header>
-    <div class="gioHang">
-        <hr class="line">
-    
+
+    <div class="detailCart">
         <h2 class="shopping-cart">Shopping cart (1 item)</h2>
+
         <div class="content">
             <div class="container-info">
                 <div class="content_info-product">
@@ -93,7 +93,12 @@
             </div>
         </div>
         </div>
+
     </div>
+
+    </body>
+
+    
 </template>
 
 <script>
@@ -157,13 +162,18 @@ export default {
 </script>
 
 <style scoped>
-
 *{
     margin: 0;
     padding: 0;
 }
-.app{
+.detailCart{
+    background-color: #FFFFFF;
     width: 100%;
+    height: 200px;
+    position: relative;
+    top: 99px;
+}
+body{   
     background-color: #F2F2F6;
 }
 header{
@@ -457,5 +467,9 @@ header{
 .gioHang{
     margin-top: 120px;
     background-color: #FFFFFF;
+}
+.shopping-cart{
+   padding: 20px 0px;
+    margin-left: 30px;
 }
 </style>

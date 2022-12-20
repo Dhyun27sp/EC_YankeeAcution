@@ -81,7 +81,8 @@
       <div class="centerDetail">
 
               <div class="name">LISA MV LALISA- Bộ Thẻ Card Ảnh Lisa TRONG MV Lalisa </div>
-              <div class="rate_bidCount">
+              <div class="bidCount">3 đã đấu giá</div>
+              <!-- <div class="rate_bidCount">
                   <div class="starRate">
                       <span class="fa fa-star checked"></span>
                       <span class="fa fa-star checked"></span>
@@ -90,7 +91,7 @@
                       <span class="fa fa-star"></span>
                   </div>
                   <div class="bidCount">3 đã đấu giá</div>
-              </div>
+              </div> -->
               <div class="timeLeft">
                   <p><span>Thời gian: </span>03d 45h 3m </p>
 
@@ -167,7 +168,6 @@
     </div>
     <div class="feedBack">
         <div class="left_feedBack">
-            <div>rate</div>
         </div>
         <div class="right_feedBack">
             <div class="fBackTitle">
@@ -579,7 +579,7 @@ header{
     margin-top: 10px;
 }
 .timeLeft{
-    margin-top: 20px;
+    margin-top: 10px;
     padding-top: 10px;
     font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
     font-size: 14px;
@@ -636,10 +636,9 @@ header{
 .bidCount{
     font-size: 14px;
     font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
-    margin-left: 10px;
-    border-left: 1px solid #19124F;
-    padding-left: 5px;
     color: #19124F;
+    margin-top: 20px;
+    padding-left: 5px;
 }
 .Btn{
     width: 100%;

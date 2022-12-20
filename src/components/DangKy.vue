@@ -28,24 +28,32 @@
                         <span></span>
                         <label>Email</label>
                     </div>
+
+                    <div class="txt_field" >
+                        <input  type="text" required>
+                        <span></span>
+                        <label>Address</label>
+                    </div>
         
                     <div class="flex_txt_field">
-                        <div class="txt_field"  >
-                            <input v-model="pass" type="text" required>
-                            <span></span>
+
+                        <div class="txt_field">
+                            <input type="password" required>
+                             <span></span>
                             <label>Password</label>
                         </div>
-                        <div class="txt_field" >
-                            <input type="text" required>
-                            <span></span>
+                        <div class="txt_field">
+                            <input type="password" required>
+                             <span></span>
                             <label>Confirm password</label>
                         </div>
+                        
                     </div>
                     <div class="note">By Creating an account, you agree to our User
                         Agreement and acknowledge reading our User Privacy.</div>
                     <input type="submit" value="Create an account">
                     <div class="signup_link">
-                        Already a member ? <router-link to="/DangNhap">Đăng ký</router-link>
+                        Already a member ? <router-link to="/DangNhap">Đăng nhập</router-link>
                     </div>
                 </form>
             </div>
@@ -118,8 +126,8 @@ export default {
 .container-right form {
     position: absolute;
     width: 400px;
-    height: 500px;
-    top: 50%;
+    height: fit-content;
+    top: 48%;
     left: 70%;
     transform: translate(-50%, -50%);
     box-shadow: 0px 19px 40px rgba(0, 0, 0, 0.05);
@@ -141,6 +149,7 @@ export default {
     font-weight: bold;
     color: black;
     margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .container-right .welcome{
@@ -169,10 +178,17 @@ form .txt_field{
     outline: none;
 }
 .flex_txt_field {
+    margin-top: -20px;
+
     display: flex;
     justify-content: space-between;
 }
 
+.passWord{
+    margin-top: -20px;
+    display: flex;
+    justify-content: space-between;
+}
 #txtEmail{
     margin: 0 0;
 }
