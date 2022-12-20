@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyP = require('body-parser');
-
+const apiRoutes = require('./api/api');
 
 app.use(bodyP.urlencoded({ extended: false }));
 app.use(bodyP.json());
@@ -21,6 +21,7 @@ const feedback = require('./models/feedback');
 const product = require('./models/product');
 const category = require('./models/category');
 const cart = require('./models/cart');
+const deleteP = require("./function/deleteP");
 
 
 //Signup Function
@@ -98,7 +99,6 @@ app.post('/edit', (req, res, next) => {
 app.post('/editP', (req, res, next) => {
     var name = req.body.name;
     var password = req.body.password;
-
     user.updateMany({
         name: name
     }, {
@@ -170,6 +170,7 @@ app.post('/product/edit', (req, res, next) => {
 })
 
 //Delete product
+
 app.post('/product/delete', (req, res, next) => {
     var pname = req.body.pname;
 
@@ -186,7 +187,7 @@ app.post('/product/delete', (req, res, next) => {
         })
 })
 
-
+//app.use('/api', apiRoutes);
 app.get('/', (req, res, next) => {
     res.json('Quang Duong ngu lon');
 });
