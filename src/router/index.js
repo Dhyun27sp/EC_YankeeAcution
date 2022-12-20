@@ -7,6 +7,8 @@ import DangNhap from '../components/DangNhap.vue'
 import DangKy from '../components/DangKy.vue'
 import SanPham from '../components/SanPham.vue'
 import GioHang from '../components/GioHang.vue'
+import ThanhToan from '../components/ThanhToan.vue'
+import ThongTinCuaHang from '../components/ThongTinCuaHang.vue'
 
 const routes= [
     {path: '/',
@@ -36,6 +38,16 @@ const routes= [
     path: '/GioHang',
     name: "GioHang",
     component: GioHang
+   },
+   {
+    path: '/ThanhToan',
+    name: "ThanhToan",
+    component: ThanhToan
+   },
+   {
+    path: '/ThongTinCuaHang',
+    name: "ThongTinCuaHang",
+    component: ThongTinCuaHang
    }
 
    
