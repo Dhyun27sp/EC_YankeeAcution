@@ -22,6 +22,12 @@
                             <label>Last name</label>
                         </div>
                     </div>
+
+                    <div class="txt_field">
+                        <input v-model="email" type="text" required>
+                        <span></span>
+                        <label>Nickname</label>
+                    </div>
         
                     <div class="txt_field" id="txtEmail">
                         <input v-model="email" type="text" required>
@@ -166,7 +172,7 @@ export default {
 form .txt_field{
     position: relative;
     border-bottom: 2px solid #adadad;
-    margin: 20px 0;
+    margin: 14px 0;
 }
 .txt_field input{
     width: 100%;
@@ -178,8 +184,8 @@ form .txt_field{
     outline: none;
 }
 .flex_txt_field {
-    margin-top: -20px;
-
+    margin-top: -14px;
+    margin-bottom: -14px;
     display: flex;
     justify-content: space-between;
 }
@@ -194,7 +200,7 @@ form .txt_field{
 }
 
 
-.flex_txt_field .txt_field{
+.flex_txt_field> .txt_field{
     width: 48%;
 }
 .txt_field label{
@@ -219,7 +225,7 @@ form .txt_field{
 }
 .txt_field input:focus ~ label,
 .txt_field input:valid ~ label{
-    top: -5px;
+    top: 0px;
     color: #F47458;
 }
 .txt_field input:focus ~ span::before,
@@ -231,8 +237,7 @@ form .txt_field{
     color: #a6a6a6;
     /*cursor: pointer;*/
     font-size: 11px;
-    /*margin: 10px 0;*/
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 .pass:hover{
     text-decoration: underline;
