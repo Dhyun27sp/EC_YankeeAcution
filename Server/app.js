@@ -3,9 +3,14 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyP = require('body-parser');
 const apiRoutes = require('./api/api');
+const cors = require('cors');
 
 app.use(bodyP.urlencoded({ extended: false }));
 app.use(bodyP.json());
+
+app.use(cors({
+    origin: 'http://localhost:8080',
+}))
 
 mongoose.set("strictQuery", false);
 mongoose.connect("mongodb+srv://admin:123@tmdtn2st7.nu0qeav.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
@@ -21,55 +26,13 @@ const feedback = require('./models/feedback');
 const product = require('./models/product');
 const category = require('./models/category');
 const cart = require('./models/cart');
-const deleteP = require("./function/deleteP");
 
 
 //Signup Function
-app.post('/signup', async (req, res, next) => {
-    var name = req.body.name;
-    var password = req.body.password;
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-    var email = req.body.email;
-    var address = req.body.address;
-
-    user.create({
-        name: name,
-        password: password,
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        address: address
-    })
-
-        .then(data => {
-            res.json('Tao tai khoan thanh cong')
-        })
-        .catch(err => {
-            res.status(500).json('Username da ton tai')
-        });
-});
+require('./routes/signup')(app)
 
 //Login Function
-app.post('/login', (req, res, next) => {
-    var name = req.body.name;
-    var password = req.body.password;
-
-    user.findOne({
-        name: name,
-        password: password
-    })
-        .then(data => {
-            if (data) {
-                res.json('dang nhap thanh cong')
-            } else {
-                res.status(300).json('tai khoan hoac mat khau khong dung')
-            }
-        })
-        .catch(err => {
-            res.status(500).json('Server co loi')
-        })
-});
+require('./routes/signin')(app)
 
 //Edit profile Function
 app.post('/edit', (req, res, next) => {
@@ -187,7 +150,20 @@ app.post('/product/delete', (req, res, next) => {
         })
 })
 
+//Show all Product
+
+app.get('/product/getAll', async (req, res, next) => {
+    try {
+        const results = await product.find();
+        res.send(results);
+    } catch (err) {
+        console.log(err.message);
+    }
+})
+
+
 //app.use('/api', apiRoutes);
 app.get('/', (req, res, next) => {
     res.json('Quang Duong ngu lon');
 });
+
