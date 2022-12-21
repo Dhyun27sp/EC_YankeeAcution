@@ -37,6 +37,10 @@
 
 <script>
 import authenticate from '@/service/authenticate';
+import axios from 'axios';
+import setCookie from "../service/setCookie";
+import getCookie from "../service/getCookie";
+import removeCookie from "../service/removecookie";
 
 export default {
     data() {
@@ -47,18 +51,25 @@ export default {
     },
     methods: {
         async signin() {
-            const respone = await authenticate.signin({
+            const response = await authenticate.signin({
                 name: this.name,
-                password: this.password
+                password: this.password,
             })
-            if (respone.status == 200) {
-                this.$router.push('/')
-            } else {
-                console.log(response.data)
+            const token = response.data;
+            console.log(response.data);
+            try {
+                if (response.status == 200) {
+                    setCookie('token', token);
+                    this.$router.push('/')
+                }
+                else {
+                    removeCookie('token');
+                }
+            } catch (err) {
+                removeCookie('token');
             }
         }
     }
-
 }
 </script>
 
