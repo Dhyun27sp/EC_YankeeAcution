@@ -1,5 +1,7 @@
-const user = require('../../models/user'); module.exports = (app) => {
+const user = require('../../models/user');
 
+
+module.exports = (app) => {
     app.post('/signup', (req, res, next) => {
         var name = req.body.name;
         var password = req.body.password;
@@ -26,7 +28,7 @@ const user = require('../../models/user'); module.exports = (app) => {
                     return res.status(300).json('Username da ton tai')
                 });
         } else {
-            return res.status(401).json('password khong khop')
+            return res.json('password khong khop')
         }
     });
 }

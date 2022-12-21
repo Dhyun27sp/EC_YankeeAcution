@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyP = require('body-parser');
 const cors = require('cors');
+const jwt = require('jsonwebtoken')
 
 app.use(bodyP.urlencoded({ extended: false }));
 app.use(bodyP.json());
