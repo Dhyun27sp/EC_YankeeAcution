@@ -5,8 +5,8 @@
             <img src="../components/HinhAnh/Logo/Logo2.png" alt="Logo">
         </div>
         <div class="navigation">
-            <a href="#" class="nav_home">TRANG CHỦ</a>
-            <a href="#" class="nav_auction">ĐẤU GIÁ</a>
+            <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>
+            <router-link class="register" to="/ToanBoSanPham">SẢN PHẨM</router-link>
             <a href="#" class="nav_auction">DANH MỤC</a>
             <a href="#" class="nav_auction">GIỚI THIỆU</a>
             <a href="#" class="how_to_buy">TRỢ GIÚP</a>
@@ -33,8 +33,10 @@
 
             </div>
             <div class="cart">
-                <img src="../components/HinhAnh/Icon/Cart.png" alt="">
-                <div class="count_cart">0</div>
+                <router-link class="register" to="/GioHang">
+                    <img class="imgIcon" src="../components/HinhAnh/Icon/Cart.png" alt="">
+                    <div class="count_cart">0</div>
+                </router-link>
             </div>
             <div class="inform">
                 <img src="../components/HinhAnh/Icon/Bell.png" alt="">
@@ -364,7 +366,7 @@ header{
     align-items: center;
     margin-right: 20px;
 }
-.cart>img{
+.imgIcon {
     width: 25px;
     height: 25px;
 }

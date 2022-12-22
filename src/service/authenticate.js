@@ -6,6 +6,9 @@ export default {
     },
     signup(credentials) {
         return api().post('signup', credentials);
-    }
+    },
+    // getproduct(credentials){
+    //     return api().get('show', credentials)
+    // }
 }
 

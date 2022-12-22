@@ -6,7 +6,11 @@ import TrangChu from '../components/TrangChu.vue'
 import DangNhap from '../components/DangNhap.vue'
 import SanPham from '../components/SanPham.vue'
 import GioHang from '../components/GioHang.vue'
-import DangKy from '../components/DangKy.vue';
+import DangKy from '../components/DangKy.vue'
+import ToanBoSanPham from '../components/ToanBoSanPham.vue'
+import TimKiem from '../components/TimKiem.vue'
+import ThanhToan from '../components/ThanhToan.vue'
+import Card from '../components/Card.vue'
 
 const routes = [
     {
@@ -15,8 +19,8 @@ const routes = [
         component: TrangChu
     },
     {
-        path: '/home',
-        name: "homepage",
+        path: '/TrangChu',
+        name: "TrangChu",
         component: TrangChu
     },
     {
@@ -29,15 +33,35 @@ const routes = [
         name: "DangKy",
         component: DangKy
     },
-    {
-        path: '/SanPham',
-        name: "SanPham",
-        component: SanPham
-    },
+    // {
+    //     path: '/SanPham',
+    //     name: "SanPham",
+    //     component: SanPham
+    // },
     {
         path: '/GioHang',
         name: "GioHang",
         component: GioHang
+    },
+    {
+        path: '/ToanBoSanPham',
+        name: "ToanBoSanPham",
+        component: ToanBoSanPham,
+    },
+    {
+        path: '/ToanBoSanPham/XemChiTiet/:id',
+        name: "ToanBoSanPham.XemChiTiet",
+        component: SanPham,
+    },
+    {
+        path: '/TimKiem',
+        name: "TimKiem",
+        component: TimKiem
+    },
+    {
+        path: '/ThanhToan',
+        name: "ThanhToan",
+        component: ThanhToan
     },
 ]
 const router = createRouter({

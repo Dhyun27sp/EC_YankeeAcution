@@ -5,8 +5,8 @@
                 <img src="../components/HinhAnh/Logo/Logo2.png" alt="Logo">
             </div>
             <div class="navigation">
-                <a href="#" class="nav_home">TRANG CHỦ</a>
-                <a href="#" class="nav_auction">ĐẤU GIÁ</a>
+                <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>
+                <router-link class="register" to="/ToanBoSanPham">SẢN PHẨM</router-link>
                 <a href="#" class="nav_auction">DANH MỤC</a>
                 <a href="#" class="nav_auction">GIỚI THIỆU</a>
                 <a href="#" class="how_to_buy">TRỢ GIÚP</a>
@@ -26,19 +26,27 @@
                                 <option value="2">Lightstick</option>
                                 <option value="3">Poster</option>
                             </select>
-                            <input type="text" placeholder="Tìm kiếm">
-                            <button class="searchBtn">Tìm kiếm</button>
+                            <input type="text" placeholder="Tìm kiếm" v-model="search">
+                            <button class="searchBtn" @click="sendMessage">
+                                <router-link to="/TimKiem">Tìm kiếm</router-link>
+                            </button>
                         </div>
 
                     </div>
 
                 </div>
                 <div class="cart">
-                    <img src="../components/HinhAnh/Icon/Cart.png" alt="">
-                    <div class="count_cart">0</div>
+                    <router-link class="register" to="/GioHang">
+                        <img class="imgIcon" src="../components/HinhAnh/Icon/Cart.png" alt="">
+                        <div class="count_cart">0</div>
+                    </router-link>
+                    
                 </div>
                 <div class="inform">
-                    <img src="../components/HinhAnh/Icon/Bell.png" alt="">
+                    <router-link class="register" to="/GioHang">
+                        <img class="imgIcon" src="../components/HinhAnh/Icon/Bell.png" alt="">
+                    </router-link>
+                    
                 </div>
                 <div class="header_btn">
                     <router-link class="register" to="/DangKy">ĐĂNG KÝ</router-link>
@@ -227,6 +235,8 @@ export default {
             imgDefault: true,
 
             isClick: false,
+
+            search: '',
         }
     },
     methods: {
@@ -265,20 +275,26 @@ export default {
         },
         handleClickX(e) {
             this.isClick = false;
-        }
+        },    
     }
 }
-
-
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.txtSearch{
+    height: 30px;
+    width: 35%;
+    margin-right: 10px;
+    padding-left: 5px;
+    border: 1px solid #000000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 * {
     margin: 0;
     padding: 0;
 }
-
 header {
     width: 100%;
     height: 95px;
@@ -291,7 +307,6 @@ header {
     left: 0;
     z-index: 1;
 }
-
 .navigation {
     width: 43%;
     height: 100%;
@@ -299,7 +314,6 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-
 .navigation>a {
     width: 100px;
     text-decoration: none;
@@ -311,12 +325,10 @@ header {
     margin-right: 15px;
     font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
 }
-
 .navigation>a:hover {
     color: #F47458;
     border-bottom: 1.5px solid #F47458;
 }
-
 .header_logo {
     width: 7%;
     height: 100%;
@@ -326,12 +338,10 @@ header {
     padding: 3px 0;
     margin-right: 50px;
 }
-
 .header_logo>img {
     width: 110%;
 
 }
-
 .header_right {
     width: 40%;
     height: 100%;
@@ -339,7 +349,6 @@ header {
     justify-content: flex-end;
     align-items: center;
 }
-
 #search {
     width: 50px;
     height: 100%;
@@ -349,14 +358,12 @@ header {
     flex-direction: column;
     margin-right: 20px;
 }
-
 .searchIcon {
     height: 100%;
     width: 100%;
     background: none;
     border: none;
 }
-
 .searchIcon>img {
     width: 25px;
     height: 25px;
@@ -456,7 +463,6 @@ header {
     top: 30px;
     right: 3px;
 }
-
 .inform {
     width: 50px;
     height: 100%;
@@ -465,12 +471,10 @@ header {
     align-items: center;
     margin-right: 20px;
 }
-
-.inform>img {
+.imgIcon {
     width: 25px;
     height: 25px;
 }
-
 .header_btn {
     width: 40%;
     height: 100%;
@@ -478,7 +482,6 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-
 .header_btn>a {
     display: flex;
     justify-content: center;
@@ -492,54 +495,42 @@ header {
     font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 14px;
 }
-
 .login {
     background-color: #F66A55;
 }
-
 .clickOnHeader {
     background-color: #FFFFFF;
 }
-
 /* CSS header home */
 .head {
     width: 100%;
 }
-
 .imgBackground {
     width: 100%;
     height: 550px;
     opacity: 0.9;
     z-index: -1;
     position: relative;
-    top: -60px;
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
+    top: 0;
 }
-
 header:hover {
     background-color: #FFFFFF;
 }
-
 .slogan {
     position: absolute;
     left: 160px;
     top: 160px;
     width: 750px;
 }
-
 .slogan_subject {
     font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 58px;
     font-weight: bolder;
 }
-
 .slogan-content {
     font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 25px;
 }
-
 /*CSS Catalog*/
 .catalog {
     width: 100%;
@@ -549,16 +540,13 @@ header:hover {
     justify-content: center;
     flex-direction: column;
 }
-
 .catalog>.title {
     margin-bottom: 50px;
 }
-
 .catalog_detail {
     display: flex;
     justify-content: center;
 }
-
 .title {
     /*padding-top: 50px;*/
     display: flex;
@@ -567,12 +555,10 @@ header:hover {
     padding-bottom: 30px;
     font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
 }
-
 .catalog>.title {
     /*font-size: 55px;*/
     color: #19124F;
 }
-
 .tag_Catalog {
     width: 150px;
     height: 180px;
@@ -582,16 +568,13 @@ header:hover {
     margin: 0 10px;
     transition: transform .25s ease;
 }
-
 .tag_Catalog:hover {
     transform: scale(1.3);
 }
-
 .tag_Catalog>img {
     width: 150px;
     height: 150px;
 }
-
 .tag_Catalog>p {
     display: flex;
     align-self: center;
@@ -599,25 +582,19 @@ header:hover {
     font-size: 18px;
     color: #19124F;
 }
-
 /*CSS Topic*/
 .topic {
     width: 100%;
     background-color: black;
-    /*font-family: Lato, sans-serif;*/
     padding: 50px 0;
-
 }
-
 .topic>.title {
     color: #FFFFFF;
 }
-
 #detailTopic {
     display: flex;
     justify-content: center;
 }
-
 .button {
     background: none;
     border: none;
@@ -629,7 +606,6 @@ header:hover {
     cursor: pointer;
     margin: 5px 40px;
 }
-
 .button span {
     display: inline-block;
     position: relative;
@@ -646,40 +622,31 @@ header:hover {
 
 .buttonActive {
     border-bottom: 5px solid #FFFFFF;
-}
-
-.button:hover span {
+}.button:hover span {
     margin-right: 5px;
 }
-
 .button:hover span:after {
     opacity: 1;
     right: 0;
 }
-
 .leftTopic {
     padding: 30px 0;
     width: 35%;
     display: flex;
     flex-direction: column;
 }
-
 .rightTopic {
     width: 55%;
-
 }
-
 .imgHotProduct {
     width: 100%;
     height: 400px;
     display: none;
     transition: display 0.3s linear;
 }
-
 .imgDisplay {
     display: block;
 }
-
 /*CSS Recommend Product*/
 .recommend {
     display: flex;
@@ -687,14 +654,12 @@ header:hover {
     flex-direction: column;
     padding: 50px 5%;
 }
-
 .recommendProducts {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
-
 .recommendProduct {
     width: 220px;
     margin: 15px 15px;
@@ -703,13 +668,11 @@ header:hover {
     display: flex;
     flex-direction: column;
 }
-
 .recommendProduct>img {
     width: 100%;
     height: auto;
     border-radius: 3px;
 }
-
 .nameProduct {
     width: 100%;
     font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
@@ -718,7 +681,6 @@ header:hover {
     margin: 7px 0px;
     text-align: center;
 }
-
 .priceProduct {
     width: 100%;
     font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
@@ -727,14 +689,11 @@ header:hover {
     text-align: center;
     font-weight: bold;
 }
-
 .recommendProduct:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     top: 0px;
 }
-
 /* CSS footer */
-
 footer {
     position: relative;
     width: 100%;
@@ -745,7 +704,6 @@ footer {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-
 footer .container {
     width: 100%;
     padding: 0 5%;
@@ -754,23 +712,18 @@ footer .container {
     flex-wrap: wrap;
     flex-direction: row;
 }
-
 footer .container .noi-dung {
     margin-right: 30px;
 
 }
-
 footer .container .noi-dung.about {
     width: 40%;
-}
-
-footer .container .noi-dung.about h2 {
+}footer .container .noi-dung.about h2 {
     position: relative;
     color: #fff;
     font-weight: 500;
     margin-bottom: 15px;
 }
-
 footer .container .noi-dung.about h2:before {
     content: '';
     position: absolute;
@@ -780,21 +733,17 @@ footer .container .noi-dung.about h2:before {
     height: 2px;
     background: #f00;
 }
-
 footer .container .noi-dung.about p {
     color: #999;
 }
-
 /*Thiết Lập Cho Thành Phần Icon Mạng Xã Hội*/
 .social-icon {
     margin-top: 20px;
     display: flex;
 }
-
 .social-icon li {
     list-style: none;
 }
-
 .social-icon li a {
     display: inline-block;
     width: 40px;
@@ -807,30 +756,25 @@ footer .container .noi-dung.about p {
     text-decoration: none;
     border-radius: 4px;
 }
-
 .social-icon li a:hover {
     background: #f00;
 }
-
 .social-icon li a .fa {
     color: #fff;
     font-size: 20px;
 }
-
 .links h2 {
     position: relative;
     color: #fff;
     font-weight: 500;
     margin-bottom: 15px;
 }
-
 .links h2 {
     position: relative;
     color: #fff;
     font-weight: 500;
     margin-bottom: 15px;
 }
-
 .links h2::before {
     content: '';
     position: absolute;
@@ -849,7 +793,6 @@ footer .container .noi-dung.about p {
 .links ul li {
     list-style: none;
 }
-
 .links ul li a {
     color: #999;
     text-decoration: none;
@@ -860,14 +803,12 @@ footer .container .noi-dung.about p {
 .links ul li a:hover {
     color: #fff;
 }
-
 .contact h2 {
     position: relative;
     color: #fff;
     font-weight: 500;
     margin-bottom: 15px;
 }
-
 .contact h2::before {
     content: '';
     position: absolute;
@@ -877,31 +818,25 @@ footer .container .noi-dung.about p {
     height: 2px;
     background: #f00;
 }
-
 .contact {
     width: calc(35% - 60px);
     margin-right: 0 !important;
 }
-
 .contact .info {
     position: relative;
 }
-
 .contact .info li {
     display: flex;
     margin-bottom: 16px;
 }
-
 .contact .info li span:nth-child(1) {
     color: #fff;
     font-size: 20px;
     margin-right: 10px;
 }
-
 .contact .info li span {
     color: #999;
 }
-
 .contact .info li a {
     color: #999;
     text-decoration: none;
