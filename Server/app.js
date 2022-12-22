@@ -37,7 +37,10 @@ require('./routes/product/show')(app)
 require('./routes/product/findone')(app)
 //User
 require('./routes/user/findone')(app)
-//app.use('/api', apiRoutes);
+
+//Tim san pham theo category
+require('./routes/product/findwcondition')(app)
+
 app.get('/', (req, res, next) => {
     res.json('Hi im server');
 });
