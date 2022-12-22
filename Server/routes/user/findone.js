@@ -1,10 +1,10 @@
-const product = require('../../models/product');
+const user = require('../../models/user');
 
 module.exports = (app) => {
-    app.get('/product/getOne/:id', async (req, res, next) => {
+    app.get('/user/getOne/:id', async (req, res, next) => {
         var id = req.params.id;
         try {
-            product.findById(id, function (err, docs) {
+            user.findById(id, function (err, docs) {
                 if (err) {
                     res.send('Khong tim thay');
                 }

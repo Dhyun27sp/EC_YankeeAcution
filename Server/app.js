@@ -32,7 +32,11 @@ require('./routes/product/update')(app)
 require('./routes/product/delete')(app)
 require('./routes/product/show')(app)
 
+//Tim theo id
+//Product
 require('./routes/product/findone')(app)
+//User
+require('./routes/user/findone')(app)
 //app.use('/api', apiRoutes);
 app.get('/', (req, res, next) => {
     res.json('Hi im server');
