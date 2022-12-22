@@ -6,7 +6,6 @@
         </div>
         <div class="navigation">
             <router-link class="register" to="/">TRANG CHỦ</router-link>
-            <!-- <a href="#" class="nav_home">TRANG CHỦ</a> -->
             <a href="#" class="nav_auction">ĐẤU GIÁ</a>
             <a href="#" class="nav_auction">DANH MỤC</a>
             <a href="#" class="nav_auction">GIỚI THIỆU</a>
@@ -26,7 +25,8 @@
                         <option value="2">Lightstick</option>
                         <option value="3">Poster</option>
                     </select>
-                    <input type="text" placeholder="Tìm kiếm">
+                    <input type="text" placeholder="Tìm kiếm" v-model="inputSearch">
+                    <!-- <div class="txtSearch" placeholder="Tìm kiếm"> hhkjgF</div> -->
                     <button class="searchBtn">Tìm kiếm</button>
                     </div>
                     
@@ -59,92 +59,65 @@
     </div>
     <div class="rightAllProduct">
         <div class="recommendProducts">
-            <div class="recommendProduct" :key="index" v-for="(product, index) in products">
+            <div class="recommendProduct" v-for="product in filteredProducts" v-bind:key="product.name">
                 <img src="../components/HinhAnh/Product/Product1.png" alt="">
-                <div class="nameProduct">{{ product.pname }}</div>
-                <div class="priceProduct">{{ product.amount }}</div>
+                <div class="nameProduct">{{ product.name }}</div>
+                <div class="priceProduct">{{ product.price }}</div>
             </div>
+
         </div>
     </div>
 </div>
 
     </body>
+
+
 </template>
 
 <script>
+
 export default {
-    name: 'ToanBoSanPham',
-
-    // data() {
-    // return{
-    //     isMouseOver1: false,
-    //     isMouseOver2: false, 
-    //     isMouseOver3:false, 
-    //     isMouseOver4: false,
-
-    //     imgDefault: true,   
-                    
-    //     isClick: false,
-
-    //     // timeCount: '',
-    //             }   
-    // },
-    // methods: {
-    //     handleMouseOver(e, number){ 
-    //         if(number==1){
-    //             this.isMouseOver1= true;
-    //             this.isMouseOver2= false;
-    //             this.isMouseOver3= false;
-    //             this.isMouseOver4= false;
-    //             this.imgDefault= false;      
-    //         }
-    //         else if(number==2){
-    //             this.isMouseOver1= false;
-    //             this.isMouseOver2= true;
-    //             this.isMouseOver3= false;
-    //             this.isMouseOver4= false
-    //             this.imgDefault= false;
-    //         }  
-    //         else if(number==3){
-    //             this.isMouseOver1= false;
-    //             this.isMouseOver2= false;
-    //             this.isMouseOver3= true;
-    //             this.isMouseOver4= false
-    //             this.imgDefault= false;
-    //         }  
-    //         else if(number==4){
-    //             this.isMouseOver1= false;
-    //             this.isMouseOver2= false;
-    //             this.isMouseOver3= false;
-    //             this.isMouseOver4= true
-    //             this.imgDefault= false;
-    //         }              
-    //     },
-    //     handleClickSearch(e){
-    //         this.isClick= true;
-    //     }, 
-    //     handleClickX(e){
-    //         this.isClick= false;
-    //     },
-       
-    // }  
+    name: 'TimKiem',
     data(){
-        return {
-            products: [],
+        return{
+            inputSearch: '',
+            products:[
+                {
+                    name:'thien',
+                    price: '24'
+                },
+                {
+                    name:'duong',
+                    price: '25'
+                },
+                {
+                    name:'duc',
+                    price: '26'
+                },
+            ], 
         }
     }, 
-    created(){
-        this.getAll()
-    },
-    methods:{
-        getAll(){
-            return this.$request.get('http://localhost:5000/product/getAll').then(res =>{
-                console.log(res.data)
-                this.products= res.data
-            })
+   
+    filters:{
+        toLowerCase(text){
+            return text.toLowerCase();
         }
+    }, 
+    computed:{
+        filteredProducts(){
+            return this.products.filter((element)=>{
+                return element.name.match(this.search);
+            })
+        },
+        // getDataSearch(){
+        //     evenBus.$on('inputSearch', (search)=>{
+        //         this.inputSearch= search
+        //     })
+        // }
     }
+
 }
+
 </script>
 
 <style scoped>
@@ -250,7 +223,7 @@ header{
     justify-content: center;
     align-items: center;
     transition: visibility .2s linear;
-    visibility: hidden;
+    visibility: visible;
 }.groupSearchDrop{
     width: 100%;
     display: flex;
@@ -275,7 +248,8 @@ header{
     font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
     font-size: 16px;
 }
-.groupSearchDrop>input{
+/* .groupSearchDrop>input */
+.groupSearchDrop>input {
     height: 30px;
     width: 35%;
     margin-right: 10px;
