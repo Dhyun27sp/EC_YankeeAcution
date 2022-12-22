@@ -2,8 +2,9 @@
     <body>
         <header id="header" v-bind:class="{clickOnHeader: isClick}">
         <div  class="header_logo">
-            <img src="../components/HinhAnh/Logo/Logo2.png" alt="Logo">
-        </div>
+            <a class="header-img" href="/">
+                <img class="login-logo" src="../components/HinhAnh/Logo/Logo2.png" alt="logo">
+                </a>        </div>
         <div class="navigation">
             <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>
             <router-link class="register" to="/ToanBoSanPham">SẢN PHẨM</router-link>
@@ -224,7 +225,7 @@ header{
     padding: 3px 0;
     margin-right: 50px;
 }
-.header_logo>img{
+.login-logo{
     width: 110%;
 
 }

@@ -2,7 +2,9 @@
     <body>
         <header id="header" v-bind:class="{clickOnHeader: isClick}">
         <div  class="header_logo">
-            <img src="../components/HinhAnh/Logo/Logo2.png" alt="Logo">
+            <a class="header-img" href="/">
+                <img class="login-logo" src="../components/HinhAnh/Logo/Logo2.png" alt="logo">
+                </a>
         </div>
         <div class="navigation">
             <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>

@@ -2,7 +2,9 @@
     <div class="container">
       <div class="container_header">
           <div class="container_header_logo&title">
-              <img class="logo" src="../components/HinhAnh/Logo/Logo1.png">
+            <a class="header-img" href="/">
+                <img class="login-logo" src="../components/HinhAnh/Logo/Logo2.png" alt="logo">
+                </a>
               <h2 class="payment">Thanh toán</h2>
           </div>
           <div class="help-noti-account">
@@ -164,9 +166,8 @@
           paidFor: false,
           product: {
             price: 777.77,
-            description: "leg lamp from that one movie",
-          //   img: "./assets/lamp.jpg"
-          img: '../components/HinhAnh/Product/Product1'
+        //     description: "leg lamp from that one movie",
+        //   img: '../components/HinhAnh/Product/Product1'
           }
         };
       },

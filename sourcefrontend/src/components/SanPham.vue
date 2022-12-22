@@ -2,7 +2,9 @@
     <body>
         <header id="header" v-bind:class="{clickOnHeader: isClick}">
         <div  class="header_logo">
-            <img src="../components/HinhAnh/Logo/Logo2.png" alt="Logo">
+            <a class="header-img" href="/">
+                <img class="login-logo" src="../components/HinhAnh/Logo/Logo2.png" alt="logo">
+                </a>
         </div>
         <div class="navigation">
             <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>
@@ -52,59 +54,33 @@
           <div class="gallery">
               <div class="container">
                             <div class="mySlide">
-                              <img src="../components/HinhAnh/Product/Product1.png" alt="">
+                                <img v-bind:src ="require(`../${product.image}.jpg`)" alt="">
                             </div>
-                  <!--          <div class="mySlide">-->
-                  <!--            <img src="HinhAnh/Home_Background/Background.png" alt="">-->
-                  <!--          </div>-->
-                  <!--          <div class="mySlide">-->
-                  <!--            <img src="HinhAnh/Home_Background/Background.png" alt="">-->
-                  <!--          </div>-->
               </div>
           </div>
-        <div class="row">
-          <div class="column"><img src="../components/HinhAnh/Product/Product1.png" alt="" class="demo"></div>
-          <div class="column"><img src="../components/HinhAnh/Product/Product1.png" alt="" class="demo"></div>
-          <div class="column"><img src="../components/HinhAnh/Product/Product1.png" alt="" class="demo"></div>
-        </div>
-          <div class="detailProduct">
+        
+          <!-- <div class="detailProduct">
               <p class="descriptTitle">Chi tiết sản phẩm:</p>
               <ul>
                   <li>Số lượng: 15</li>
                   <li>Kích thước: tùy chọn</li>
                   <li>Gửi từ: Thành phố Hồ Chí Minh</li>
               </ul>
-          </div>
+          </div> -->
           <div class="description">
               <p class="descriptTitle">Mô tả sản phẩm:</p>
-              <p class="descriptContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</p>
+              <p class="descriptContent">{{ product.pdesc }}</p>
           </div>
       </div>
       <div class="centerDetail">
 
-              <div class="name">LISA MV LALISA- Bộ Thẻ Card Ảnh Lisa TRONG MV Lalisa </div>
+              <div class="name">{{ product.pname }} </div>
               <div class="bidCount">3 đã đấu giá</div>
-              <!-- <div class="rate_bidCount">
-                  <div class="starRate">
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star"></span>
-                      <span class="fa fa-star"></span>
-                  </div>
-                  <div class="bidCount">3 đã đấu giá</div>
-              </div> -->
               <div class="timeLeft">
-                  <p><span>Thời gian: </span>03d 45h 3m </p>
-
-                  <!-- <p><vue-countdown :time="2 * 24 * 60 * 60 * 1000" v-slot="{ days, hours, minutes, seconds }">
-    Time Remaining：{{ days }} days, {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds.
-  </vue-countdown></p> -->
-
-                  
+                  <p><span>Thời gian: </span>{{ product.time }}</p>                
 
                   <div class="bid">Giá khởi điểm:
-                      <div class="price">50.398 VND</div>
+                      <div class="price">{{ product.amount }}</div>
                       <div class="placeBid"><input type="text" placeholder="Mức giá/ 1 sản phẩm..."></div>
                       <!--                  <div class="instruction">*Giá đặt ra phải lớn hơn hoặc bằng giá khởi điểm</div>-->
                       <div class="Qty">
@@ -115,19 +91,15 @@
                               <button class="plusBtn">+</button>
                           </div>
                       </div>
-                      <!--              <div class="bidQty"><input type="text" placeholder="Số lượng..."></div>-->
-                      <!--              <div class="bidCount">[3 bids]</div>-->
                       <div class="Btn"><button class="largeBtn placeBidBtn">Đấu giá</button></div>
                       <div class="Btn"><button class="largeBtn add2CartBtn">Thêm vào giỏ hàng</button></div>
-
                   </div>
-
               </div>
 
           <div class="shop">
               <div class="shopProfile">
                   <span class="profileIcon"><img src="../components/HinhAnh/Icon/Profile.png" alt=""></span>
-                  <span class="shopName">Đinh Tấn Phúc Hi</span>
+                  <span class="shopName">{{ product.author }}</span>
               </div>
               <div class="shopRate_Flow">
                   <div class="shopRate">
@@ -160,11 +132,6 @@
                       <span>Trả hàng trong 7 ngày nếu lỗi</span>
                   </div>
               </div>
-
-<!--              <div class="shopBtn">-->
-<!--                  <button>Xem shop</button>-->
-<!--                  <button>Theo dõi</button>-->
-<!--              </div>-->
           </div>
       </div>
     </div>
@@ -175,23 +142,7 @@
             <div class="fBackTitle">
                 <div class="middle">Đánh giá chi tiết</div>
             </div>
-            <div class="userFBack">
-                <div class="userInfo" >
-                    <div class="userName">NguyeVinhThien</div>
-                    <div class="starRate">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </div>
-                <div class="contentFBack">
-                    <div class="leftIcon">+</div>
-                    <div class="middleContent">truong dai học su pham kỹ thuat</div>
-                    <div class="rightDate">25/12/2022</div>
-                </div>
-            </div>
+            
             <div class="userFBack">
                 <div class="userInfo" >
                     <div class="userName">Đỗ Trung Đức</div>
@@ -216,7 +167,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'SanPham',
 
@@ -231,20 +181,18 @@ export default {
                     
         isClick: false,
 
-        // timeCount: '',
-                }   
+        product: {},
+        
+        }   
     },
-    // created() {
-    //             // setInterval(this.getNow, 1000);
-
-    //             timeCalculated (); {
-    //   const endDateDateTimeObj = DateTime.fromISO(this.endDate)
-    //   const theDiff = endDateDateTimeObj.diff(this.now, ['hours', 'minutes', 'seconds'])
-
-    //   return `${theDiff.hours}:${theDiff.minutes}:${Math.round(theDiff.seconds)}`
-    // }
-    //         },
-
+    created(){
+        let productId= this.$route.params.id
+      
+        if(productId){
+            this.getProduct(productId);
+        }
+        
+    },
     methods: {
         handleMouseOver(e, number){ 
             if(number==1){
@@ -282,13 +230,13 @@ export default {
         handleClickX(e){
             this.isClick= false;
         },
-        // getNow() {
-        //             const today = new Date();
-        //             const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        //             const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        //             const dateTime = date +' '+ time;
-        //             this.timeCount = dateTime;      
-        //         }
+        getProduct(productId){
+            this.$request.get(`http://localhost:5000/product/getOne/${productId}`).then(res =>{
+                this.product = res.data
+                console.log(this.product)
+            })
+        },
+        
     }    
 }
 </script>
@@ -347,7 +295,7 @@ header{
     padding: 3px 0;
     margin-right: 50px;
 }
-.header_logo>img{
+.login-logo{
     width: 110%;
 
 }
@@ -564,6 +512,7 @@ header{
     width: 35%;
     padding: 40px 30px;
     background-color: #ffffff;
+    min-height: 800px;
 }
 .name{
     width: 100%;

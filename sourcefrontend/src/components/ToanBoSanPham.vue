@@ -2,7 +2,10 @@
     <body>
         <header id="header" v-bind:class="{clickOnHeader: isClick}">
         <div  class="header_logo">
-            <img src="../components/HinhAnh/Logo/Logo2.png" alt="Logo">
+            <a class="header-img" href="/">
+                <img class="login-logo" src="../components/HinhAnh/Logo/Logo2.png" alt="logo">
+                </a>
+
         </div>
         <div class="navigation">
             <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>
@@ -62,7 +65,6 @@
         <div class="recommendProducts">
             <div class="recommendProduct" :key="index" v-for="(product, index) in products">
                 <router-link class="link" :to="{ name:'ToanBoSanPham.XemChiTiet', params: {id: product._id}}">
-                <!-- <img class="imgProduct" v-bind:src="require(`../${product.image}.png`)" alt=""> -->
                     <img class="imgProduct" v-bind:src ="require(`../${product.image}.jpg`)" alt="">
                     <div class="nameProduct">{{ product.pname }}</div>
                     <div class="priceProduct">{{ product.amount }}</div>
@@ -82,68 +84,59 @@
 export default {
     name: 'ToanBoSanPham',
 
-    // data() {
-    // return{
-    //     isMouseOver1: false,
-    //     isMouseOver2: false, 
-    //     isMouseOver3:false, 
-    //     isMouseOver4: false,
+    data() {
+    return{
+        isMouseOver1: false,
+        isMouseOver2: false, 
+        isMouseOver3:false, 
+        isMouseOver4: false,
 
-    //     imgDefault: true,   
+        imgDefault: true,   
                     
-    //     isClick: false,
-
-    //     // timeCount: '',
-    //             }   
-    // },
-    // methods: {
-    //     handleMouseOver(e, number){ 
-    //         if(number==1){
-    //             this.isMouseOver1= true;
-    //             this.isMouseOver2= false;
-    //             this.isMouseOver3= false;
-    //             this.isMouseOver4= false;
-    //             this.imgDefault= false;      
-    //         }
-    //         else if(number==2){
-    //             this.isMouseOver1= false;
-    //             this.isMouseOver2= true;
-    //             this.isMouseOver3= false;
-    //             this.isMouseOver4= false
-    //             this.imgDefault= false;
-    //         }  
-    //         else if(number==3){
-    //             this.isMouseOver1= false;
-    //             this.isMouseOver2= false;
-    //             this.isMouseOver3= true;
-    //             this.isMouseOver4= false
-    //             this.imgDefault= false;
-    //         }  
-    //         else if(number==4){
-    //             this.isMouseOver1= false;
-    //             this.isMouseOver2= false;
-    //             this.isMouseOver3= false;
-    //             this.isMouseOver4= true
-    //             this.imgDefault= false;
-    //         }              
-    //     },
-    //     handleClickSearch(e){
-    //         this.isClick= true;
-    //     }, 
-    //     handleClickX(e){
-    //         this.isClick= false;
-    //     },
-       
-    // }  
-    data(){
-        return {
-            products: [],
-        }
-    }, 
+        isClick: false,
+        products: [],
+        }   
+    },
     created(){
         this.getAll()
     },
-    methods:{
+    methods: {
+        handleMouseOver(e, number){ 
+            if(number==1){
+                this.isMouseOver1= true;
+                this.isMouseOver2= false;
+                this.isMouseOver3= false;
+                this.isMouseOver4= false;
+                this.imgDefault= false;      
+            }
+            else if(number==2){
+                this.isMouseOver1= false;
+                this.isMouseOver2= true;
+                this.isMouseOver3= false;
+                this.isMouseOver4= false
+                this.imgDefault= false;
+            }  
+            else if(number==3){
+                this.isMouseOver1= false;
+                this.isMouseOver2= false;
+                this.isMouseOver3= true;
+                this.isMouseOver4= false
+                this.imgDefault= false;
+            }  
+            else if(number==4){
+                this.isMouseOver1= false;
+                this.isMouseOver2= false;
+                this.isMouseOver3= false;
+                this.isMouseOver4= true
+                this.imgDefault= false;
+            }              
+        },
+        handleClickSearch(e){
+            this.isClick= true;
+        }, 
+        handleClickX(e){
+            this.isClick= false;
+        },
         getAll(){
             return this.$request.get('http://localhost:5000/product/getAll').then(res =>{
                 console.log(res.data)
@@ -151,8 +144,8 @@ export default {
             
             })
         },
-        
-    }
+       
+    }  
 }
 </script>
 
@@ -217,7 +210,7 @@ header{
     padding: 3px 0;
     margin-right: 50px;
 }
-.header_logo>img{
+.login-logo{
     width: 110%;
 
 }
@@ -420,8 +413,8 @@ header{
     flex-direction: column;
 }
 .imgProduct{
-    width: 100%;
-    height: auto;
+    width: 220px;
+    height: 250px;
     border-radius: 3px;
 }
 .nameProduct{

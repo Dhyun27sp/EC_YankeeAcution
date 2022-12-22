@@ -2,7 +2,9 @@
     <div class="head">
         <header id="header" v-bind:class="{ clickOnHeader: isClick }">
             <div class="header_logo">
-                <img src="../components/HinhAnh/Logo/Logo2.png" alt="Logo">
+                <a class="header-img" href="/">
+                <img class="login-logo" src="../components/HinhAnh/Logo/Logo2.png" alt="logo">
+                </a>
             </div>
             <div class="navigation">
                 <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>
@@ -111,15 +113,15 @@
             </div>
             <div class="rightTopic">
                 <img class="imgHotProduct" v-bind:class="{ imgDisplay: imgDefault }"
-                    src="../components/HinhAnh/Product/Product1.png" alt="">
+                    src="../images/PD01.jpg" alt="">
                 <img class="imgHotProduct" v-bind:class="{ imgDisplay: isMouseOver1 }"
-                    src="../components/HinhAnh/Home_Background/Background1.jpg" alt="">
+                    src="../images/PD25.jpg" alt="">
                 <img class="imgHotProduct" v-bind:class="{ imgDisplay: isMouseOver2 }"
-                    src="../components/HinhAnh/Product/Product1.png" alt="">
+                    src="../images/PD27.jpg" alt="">
                 <img class="imgHotProduct" v-bind:class="{ imgDisplay: isMouseOver3 }"
-                    src="../components/HinhAnh/Home_Background/Background1.jpg" alt="">
+                    src="../images/PD17.jpg" alt="">
                 <img class="imgHotProduct" v-bind:class="{ imgDisplay: isMouseOver4 }"
-                    src="../components/HinhAnh/Product/Product1.png" alt="">
+                    src="../images/PD29.jpg" alt="">
 
             </div>
         </div>
@@ -128,56 +130,23 @@
     <div class="recommend">
         <div class="title">Gợi ý</div>
         <div class="recommendProducts">
-            <div class="recommendProduct">
-                <img src="../components/HinhAnh/Product/Product1.png" alt="">
-                <div class="nameProduct">PhotoCart BTS</div>
-                <div class="priceProduct">53.000 VND</div>
+            <div class="recommendProducts">
+            <div class="recommendProduct" :key="index" v-for="(product, index) in products">
+                <router-link class="link" :to="{ name:'ToanBoSanPham.XemChiTiet', params: {id: product._id}}">
+                    <img class="imgProduct" v-bind:src ="require(`../${product.image}.jpg`)" alt="">
+                    <div class="nameProduct">{{ product.pname }}</div>
+                    <div class="priceProduct">{{ product.amount }}</div>
+                </router-link>
+                
             </div>
-            <div class="recommendProduct">
-                <img src="../components/HinhAnh/Product/Product1.png" alt="">
-                <div class="nameProduct">PhotoCart BTS</div>
-                <div class="priceProduct">53.000 VND</div>
-            </div>
-            <div class="recommendProduct">
-                <img src="../components/HinhAnh/Product/Product1.png" alt="">
-                <div class="nameProduct">PhotoCart BTS</div>
-                <div class="priceProduct">53.000 VND</div>
-            </div>
-            <div class="recommendProduct">
-                <img src="../components/HinhAnh/Product/Product1.png" alt="">
-                <div class="nameProduct">PhotoCart BTS</div>
-                <div class="priceProduct">53.000 VND</div>
-            </div>
-            <div class="recommendProduct">
-                <img src="../components/HinhAnh/Product/Product1.png" alt="">
-                <div class="nameProduct">PhotoCart BTS</div>
-                <div class="priceProduct">53.000 VND</div>
-            </div>
-            <div class="recommendProduct">
-                <img src="../components/HinhAnh/Product/Product1.png" alt="">
-                <div class="nameProduct">PhotoCart BTS</div>
-                <div class="priceProduct">53.000 VND</div>
-            </div>
-            <div class="recommendProduct">
-                <img src="../components/HinhAnh/Product/Product1.png" alt="">
-                <div class="nameProduct">PhotoCart BTS</div>
-                <div class="priceProduct">53.000 VND</div>
-            </div>
-
-
+        </div>
         </div>
     </div>
     <footer>
         <div class="container">
             <div class="noi-dung about">
                 <h2>Về Chúng Tôi</h2>
-                <p>Lorem ipsumdolor sit...</p>
-                <!--            <ul class="social-icon">-->
-                <!--                <li><a href=""><i class="fa fa-facebook"></i></a></li>-->
-                <!--                <li><a href=""><i class="fa fa-twitter"></i></a></li>-->
-                <!--                <li><a href=""><i class="fa fa-instagram"></i></a></li>-->
-                <!--                <li><a href=""><i class="fa fa-youtube"></i></a></li>-->
-                <!--            </ul>-->
+                <p>Yankee auction...</p>
             </div>
             <div class="noi-dung links">
                 <h2>Đường Dẫn</h2>
@@ -194,26 +163,14 @@
                 <ul class="info">
                     <li>
                         <span><i class="fa fa-map-marker"></i></span>
-                        <span>Đường Số 1<br />
-                            Quận 1, Thành Phố Hồ Chí Minh<br />
-                            Việt Nam</span>
+                        <span>01 Võ Văn Ngân<br />
+                            Đại học Sư phạm Kỹ Thuật<br />
+                            TP Hồ Chí Minh</span>
                     </li>
-                    <li>
-                        <span><i class="fa fa-phone"></i></span>
-                        <p><a href="#">+84 123 456 789</a>
-                            <br />
-                            <a href="#">+84 987 654 321</a>
-                        </p>
-                    </li>
+                   
                     <li>
                         <span><i class="fa fa-envelope"></i></span>
                         <p><a href="#">diachiemail@gmail.com</a></p>
-                    </li>
-                    <li>
-                        <!--                    <form class="form">-->
-                        <!--                        <input type="email" class="form__field" placeholder="Đăng Ký Subscribe Email" />-->
-                        <!--                        <button type="button" class="btn btn&#45;&#45;primary  uppercase">Gửi</button>-->
-                        <!--                    </form>-->
                     </li>
                 </ul>
             </div>
@@ -237,7 +194,12 @@ export default {
             isClick: false,
 
             search: '',
+
+            products: [],
         }
+    },
+    created(){
+        this.getAll()
     },
     methods: {
         handleMouseOver(e, number) {
@@ -275,7 +237,14 @@ export default {
         },
         handleClickX(e) {
             this.isClick = false;
-        },    
+        },  
+        getAll(){
+            return this.$request.get('http://localhost:5000/product/getAll').then(res =>{
+                console.log(res.data)
+                this.products= res.data
+            
+            })
+        },  
     }
 }
 </script>
@@ -298,7 +267,6 @@ export default {
 header {
     width: 100%;
     height: 95px;
-    /*padding: 0 2%;*/
     display: flex;
     justify-content: center;
     transition: background-color .3s linear;
@@ -338,7 +306,7 @@ header {
     padding: 3px 0;
     margin-right: 50px;
 }
-.header_logo>img {
+.login-logo {
     width: 110%;
 
 }
@@ -668,17 +636,20 @@ header:hover {
     display: flex;
     flex-direction: column;
 }
-.recommendProduct>img {
-    width: 100%;
-    height: auto;
+.imgProduct{
+    width: 220px;
+    height: 250px;
     border-radius: 3px;
 }
 .nameProduct {
     width: 100%;
-    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
+    height: 47px;
+    overflow: hidden;
+    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
     font-size: 20px;
     color: #19124F;
     margin: 7px 0px;
+    text-decoration: none;
     text-align: center;
 }
 .priceProduct {
@@ -839,6 +810,14 @@ footer .container .noi-dung.about p {
 }
 .contact .info li a {
     color: #999;
+    text-decoration: none;
+}
+.imgProduct{
+    width: 220px;
+    height: 250px;
+    border-radius: 3px;
+}
+.link{
     text-decoration: none;
 }
 </style>

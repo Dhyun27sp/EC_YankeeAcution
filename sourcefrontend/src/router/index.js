@@ -10,7 +10,6 @@ import DangKy from '../components/DangKy.vue'
 import ToanBoSanPham from '../components/ToanBoSanPham.vue'
 import TimKiem from '../components/TimKiem.vue'
 import ThanhToan from '../components/ThanhToan.vue'
-import Card from '../components/Card.vue'
 
 const routes = [
     {
