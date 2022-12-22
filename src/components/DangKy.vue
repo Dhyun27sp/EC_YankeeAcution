@@ -6,62 +6,70 @@
             </a>
             <img class="login-image-1" src="../components/HinhAnh/Image/Background_Login.png" alt="man">
         </div>
-        <div class="container-right">  
-            <div class="infoUser">
-                <h1>Yankee Auction</h1>
-                <!-- <p class="welcome">Welcome back !!!</p> -->
-                <p class="sign-in" style="font-size: 30px">Create an account</p>
-                <div class="txt_field" id="txtname">
-                    <input v-model="name" type="text" name="name">
+        <div class="container-right">
+
+
+            <h1>Yankee Auction</h1>
+            <p class="welcome">Welcome back !!!</p>
+            <p class="sign-in" style="font-size: 30px">Create an account</p>
+            <div class="txt_field" id="txtname">
+                <input v-model="name" type="text" name="name">
+                <span></span>
+                <label>Username</label>
+            </div>
+
+            <div class="flex_txt_field">
+
+                <div class="txt_field">
+                    <input type="password" name="password" v-model="password">
                     <span></span>
-                    <label>Username</label>
+                    <label>Password</label>
                 </div>
-                <div class="flex_txt_field">
-                    <div class="txt_field">
-                        <input v-model="firstname" type="text" name="firstname">
-                        <span></span>
-                        <label>First name</label>
-                    </div>
-                    <div class="txt_field">
-                        <input v-model="lastname" type="text" name="lastname">
-                        <span></span>
-                        <label>Last name</label>
-                    </div>
-                </div>
-                <div class="txt_field" id="txtEmail">
-                    <input v-model="email" type="text" name="email">
+
+                <div class="txt_field">
+                    <input type="password" name="repassword" v-model="repassword">
                     <span></span>
-                    <label>Email</label>
+                    <label>Re-type password</label>
+                </div>
+
+            </div>
+            <div class="flex_txt_field">
+                <div class="txt_field">
+                    <input v-model="firstname" type="text" name="firstname">
+                    <span></span>
+                    <label>First name</label>
                 </div>
                 <div class="txt_field">
-                    <input v-model="address" type="text" name="address">
+                    <input v-model="lastname" type="text" name="lastname">
                     <span></span>
-                    <label>Address</label>
-                </div>
-                <div class="flex_txt_field">
-                    <div class="txt_field">
-                        <input type="password" name="password" v-model="password">
-                        <span></span>
-                        <label>Password</label>
-                    </div>
-                    <div class="txt_field">
-                        <input type="password" name="repassword" v-model="repassword">
-                        <span></span>
-                        <label>Re-type password</label>
-                    </div>
-                </div>
-                <div class="note">By Creating an account, you agree to our User
-                Agreement and acknowledge reading our User Privacy.</div>
-                <input type="submit" value="Create an account" @click="signup">
-                <div class="signup_link">
-                Already a member ? <router-link to="/DangNhap">Login</router-link>
+                    <label>Last name</label>
                 </div>
             </div>
+
+            <div class="txt_field" id="txtEmail">
+                <input v-model="email" type="text" name="email">
+                <span></span>
+                <label>Email</label>
+            </div>
+
+            <div class="txt_field">
+                <input v-model="address" type="text" name="address">
+                <span></span>
+                <label>Address</label>
+            </div>
+            <div class="note">By Creating an account, you agree to our User
+                Agreement and acknowledge reading our User Privacy.</div>
+            <input type="submit" value="Create an account" @click="signup">
+            <div class="signup_link">
+                Already a member ? <router-link to="/DangNhap">Login</router-link>
+            </div>
+
         </div>
         <div class="clear"></div>
         <hr class="line-login">
     </div>
 </template>
+
 <script>
 import authenticate from '@/service/authenticate';
 
@@ -100,23 +108,21 @@ export default {
     }
 }
 </script>
-<style scoped>
-.infoUser{
-    width: 300px;
-    height: fit-content;
-    box-shadow: 0px 19px 40px rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
-    padding: 20px 40px;
-    margin-top: -20px;
-    z-index: 1;
-}
-*{
+
+<style>
+* {
     padding: 0;
     margin: 0;
 }
+
 .container {
     height: 100vh;
 }
+
+.clear {
+    clear: none;
+}
+
 .container-left {
     background-color: #FFEDE1;
     float: left;
@@ -124,14 +130,14 @@ export default {
     height: 100%;
     position: relative;
 }
+
 .container-right {
     background-color: #FFFFFF;
     float: left;
     width: 60%;
     height: 100%;
-    display: flex;
-    justify-content: center;
 }
+
 .login-logo {
     left: 25%;
     width: 50%;
@@ -139,13 +145,15 @@ export default {
     display: block;
     position: absolute;
 }
+
 .login-image-1 {
     bottom: 7%;
     left: 35%;
     width: 80%;
     position: absolute;
 }
-.line-login{
+
+.line-login {
     width: 100%;
     height: 1px;
     border-width: 0;
@@ -154,6 +162,19 @@ export default {
     position: absolute;
     top: 93%;
 }
+
+.container-right form {
+    position: absolute;
+    width: 400px;
+    height: fit-content;
+    top: 48%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 19px 40px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+
+}
+
 .container-right h1 {
     text-align: center;
     color: #F47458;
@@ -162,53 +183,69 @@ export default {
     padding: 20px 0;
     border-bottom: 0;
 }
-.sign-in{
+
+.container-right .sign-in {
     font-family: Poppins, sans-serif;
     font-size: 40px;
     font-weight: bold;
     color: black;
-    /* margin-top: 15px; */
-    margin-bottom: 25px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
-.welcome{
+
+.container-right .welcome {
     font-family: Poppins, sans-serif;
     font-size: 11px;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.5);
 }
-.txt_field{
+
+.container-right form {
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+form .txt_field {
     position: relative;
     border-bottom: 2px solid #adadad;
-    margin: 23px 0;
+    margin: 20px 0;
 }
+
 .txt_field input {
     width: 100%;
     padding: 0 5px;
-    height: 30px;
+    height: 40px;
     font-size: 16px;
     border: none;
     background: none;
     outline: none;
 }
-.flex_txt_field{
+
+.flex_txt_field {
     margin-top: -20px;
+
     display: flex;
     justify-content: space-between;
 }
+
 .passWord {
     margin-top: -20px;
     display: flex;
     justify-content: space-between;
 }
+
 #txtEmail {
     margin: 0 0;
 }
+
+
 .flex_txt_field .txt_field {
     width: 48%;
 }
+
 .txt_field label {
     position: absolute;
-    top: -5px;
+    top: 50%;
     left: 5px;
     color: #adadad;
     transform: translateY(-50%);
@@ -216,22 +253,29 @@ export default {
     pointer-events: none;
     transition: .5s;
 }
+
 .txt_field span::before {
     content: '';
     position: absolute;
-    top: 30px;
+    top: 40px;
     left: 0;
     width: 0%;
     height: 2px;
     background: #F47458;
     transition: .5s;
 }
-.txt_field input:focus~label {
+
+.txt_field input:focus~label,
+.txt_field input:valid~label {
+    top: -5px;
     color: #F47458;
 }
-.txt_field input:focus~span::before {
+
+.txt_field input:focus~span::before,
+.txt_field input:valid~span::before {
     width: 100%;
 }
+
 .note {
     /*margin: -5px 0 20px 5px;*/
     color: #a6a6a6;
@@ -240,9 +284,11 @@ export default {
     /*margin: 10px 0;*/
     margin-bottom: 10px;
 }
+
 .pass:hover {
     text-decoration: underline;
 }
+
 input[type="submit"] {
     width: 100%;
     height: 50px;
@@ -255,10 +301,12 @@ input[type="submit"] {
     cursor: pointer;
     outline: none;
 }
+
 input[type="submit"]:hover {
     border-color: #2691d9;
     transition: .5s;
 }
+
 .signup_link {
     margin: 30px 0;
     text-align: center;
@@ -267,10 +315,12 @@ input[type="submit"]:hover {
     color: #666666;
     margin: 10px 0;
 }
-.signup_link a{
+
+.signup_link a {
     color: #F47458;
     text-decoration: none;
 }
+
 .signup_link a:hover {
     text-decoration: underline;
 }

@@ -26,11 +26,8 @@
                                 <option value="2">Lightstick</option>
                                 <option value="3">Poster</option>
                             </select>
-                            <input type="text" placeholder="Tìm kiếm" v-model="search">
-                            <!-- <div class="txtSearch"></div> -->
-                            <button class="searchBtn" @click="sendMessage">
-                                <router-link to="/TimKiem">Tìm kiếm</router-link>
-                            </button>
+                            <input type="text" placeholder="Tìm kiếm">
+                            <button class="searchBtn">Tìm kiếm</button>
                         </div>
 
                     </div>
@@ -230,8 +227,6 @@ export default {
             imgDefault: true,
 
             isClick: false,
-
-            search: '',
         }
     },
     methods: {
@@ -270,30 +265,15 @@ export default {
         },
         handleClickX(e) {
             this.isClick = false;
-        },
-        // sendMessage() {
-        //     console.log(this.search);
-        //     evenBus.$emit('inputSearch', this.search);
-        //     this.search = '';
-        // },
-
-    
+        }
     }
 }
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.txtSearch{
-    height: 30px;
-    width: 35%;
-    margin-right: 10px;
-    padding-left: 5px;
-    border: 1px solid #000000;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
 * {
     margin: 0;
     padding: 0;
@@ -534,7 +514,7 @@ header {
     position: relative;
     top: -60px;
     /*position: absolute;*/
-    top: 0;
+    /*top: 0;*/
     /*left: 0;*/
 }
 

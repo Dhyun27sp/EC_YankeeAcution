@@ -32,7 +32,7 @@ require('./routes/product/update')(app)
 require('./routes/product/delete')(app)
 require('./routes/product/show')(app)
 
-
+require('./routes/product/findone')(app)
 //app.use('/api', apiRoutes);
 app.get('/', (req, res, next) => {
     res.json('Hi im server');
