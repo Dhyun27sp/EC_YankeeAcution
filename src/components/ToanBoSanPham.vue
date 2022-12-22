@@ -60,8 +60,10 @@
     <div class="rightAllProduct">
         <div class="recommendProducts">
             <div class="recommendProduct" :key="index" v-for="(product, index) in products">
-                <img src="../components/HinhAnh/Product/Product1.png" alt="">
-                <div class="nameProduct">{{ product.pname }}</div>
+                
+                 
+                <img v-bind:src="require(`../${product.image}.jpg`)" alt="">
+                <div class="nameProduct">{{  product.pname }}</div>
                 <div class="priceProduct">{{ product.amount }}</div>
             </div>
         </div>
@@ -130,12 +132,13 @@ export default {
     // }  
     data(){
         return {
-            products: [],
+            products: [],  
         }
     }, 
     created(){
         this.getAll()
     },
+
     methods:{
         getAll(){
             return this.$request.get('http://localhost:5000/product/getAll').then(res =>{
