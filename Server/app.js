@@ -9,7 +9,7 @@ app.use(bodyP.urlencoded({ extended: false }));
 app.use(bodyP.json());
 
 app.use(cors({
-    origin: 'http://localhost:8080',
+    origin: ['https://nodejslantnd.herokuapp.com/', 'http://localhost:8080']
 }))
 
 mongoose.set("strictQuery", false);
@@ -17,7 +17,16 @@ mongoose.connect("mongodb+srv://admin:123@tmdtn2st7.nu0qeav.mongodb.net/?retryWr
     if (!err) console.log("Connected to database !!!");
     else console.log("Connect ERROR");
 })
-app.listen(5000, () => { console.log("Connection listen on port 5000") });
+
+if (process.env.NODE_ENV == "production") {
+    app.use(express.static(__dirname + '/dist'));
+    app.get("*", (req, res) => {
+        res.sendFile(__dirname + "/dist/index.html");
+    });
+}
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => { console.log(`Connection listen on port ${PORT}`) });
+
 
 //Signin, Signup, Edit user
 require('./routes/user/signup')(app)
