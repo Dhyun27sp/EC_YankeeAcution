@@ -1,7 +1,9 @@
 <template>
     <div class="container">
         <div class="container-left">
-            <img class="login-logo" src="../components/HinhAnh/Image/Logo.png" alt="logo">
+            <a class="header-img" href="/">
+                <img class="login-logo" src="../components/HinhAnh/Image/Logo.png" alt="logo">
+            </a>
             <img class="login-image-1" src="../components/HinhAnh/Image/Background_Login.png" alt="man">
         </div>
         <div class="container-right">

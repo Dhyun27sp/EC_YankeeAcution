@@ -1,79 +1,82 @@
 <template>
+
     <body>
-        <header id="header" v-bind:class="{clickOnHeader: isClick}">
-        <div  class="header_logo">
-            <a class="header-img" href="/">
-                <img class="login-logo" src="../components/HinhAnh/Logo/Logo2.png" alt="logo">
+        <header id="header" v-bind:class="{ clickOnHeader: isClick }">
+            <div class="header_logo">
+                <a class="header-img" href="/">
+                    <img class="login-logo" src="../components/HinhAnh/Logo/Logo2.png" alt="logo">
                 </a>
 
-        </div>
-        <div class="navigation">
-            <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>
-            <router-link class="register" to="/ToanBoSanPham">SẢN PHẨM</router-link>
-            <a href="#" class="nav_auction">DANH MỤC</a>
-            <a href="#" class="nav_auction">GIỚI THIỆU</a>
-            <a href="#" class="how_to_buy">TRỢ GIÚP</a>
-        </div>
-        <div class="header_right">
-            <div id="search">
-                <button class="searchIcon"  @click="handleClickSearch"><img src="../components/HinhAnh/Icon/Search.png" alt=""></button>
-                <div class="searchDrop" v-bind:class="{clicked: isClick}">
-                    <div class="cancelSearch" >
-                        <button @click="handleClickX">X</button>
+            </div>
+            <div class="navigation">
+                <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>
+                <router-link class="register" to="/ToanBoSanPham">SẢN PHẨM</router-link>
+                <a href="#" class="nav_auction">DANH MỤC</a>
+                <a href="#" class="nav_auction">GIỚI THIỆU</a>
+                <a href="#" class="how_to_buy">TRỢ GIÚP</a>
+            </div>
+            <div class="header_right">
+                <div id="search">
+                    <button class="searchIcon" @click="handleClickSearch"><img
+                            src="../components/HinhAnh/Icon/Search.png" alt=""></button>
+                    <div class="searchDrop" v-bind:class="{ clicked: isClick }">
+                        <div class="cancelSearch">
+                            <button @click="handleClickX">X</button>
+                        </div>
+                        <div class="groupSearchDrop">
+                            <select name="" id="">
+                                <option value="0">Tất cả</option>
+                                <option value="1">Thẻ bo góc</option>
+                                <option value="2">Lightstick</option>
+                                <option value="3">Poster</option>
+                            </select>
+                            <input type="text" placeholder="Tìm kiếm">
+                            <button class="searchBtn">Tìm kiếm</button>
+                        </div>
+
                     </div>
-                    <div class="groupSearchDrop">
-                        <select name="" id="">
-                        <option value="0">Tất cả</option>
-                        <option value="1">Thẻ bo góc</option>
-                        <option value="2">Lightstick</option>
-                        <option value="3">Poster</option>
-                    </select>
-                    <input type="text" placeholder="Tìm kiếm">
-                    <button class="searchBtn">Tìm kiếm</button>
-                    </div>
-                    
+
                 </div>
+                <div class="cart">
+                    <router-link class="register" to="/GioHang">
+                        <img class="imgIcon" src="../components/HinhAnh/Icon/Cart.png" alt="">
+                        <div class="count_cart">0</div>
+                    </router-link>
+                </div>
+                <div class="inform">
+                    <img class="imgIcon" src="../components/HinhAnh/Icon/Bell.png" alt="">
+                </div>
+                <div class="header_btn">
+                    <router-link class="register" to="/DangKy">ĐĂNG KÝ</router-link>
+                    <router-link class="login" to="/DangNhap">ĐĂNG NHẬP</router-link>
+                </div>
+            </div>
+        </header>
 
+        <div class="allProduct">
+            <div class="leftAllProduct">
+                <div class="sidenav">
+                    <a href="#">Danh mục</a>
+                    <a href="#about">Card</a>
+                    <a href="#services">Lightstick</a>
+                    <a href="#clients">Album</a>
+                    <a href="#contact">Ticket</a>
+                </div>
             </div>
-            <div class="cart">
-                <router-link class="register" to="/GioHang">
-                    <img class="imgIcon" src="../components/HinhAnh/Icon/Cart.png" alt="">
-                    <div class="count_cart">0</div>
-                </router-link>
-            </div>
-            <div class="inform">
-                <img class="imgIcon" src="../components/HinhAnh/Icon/Bell.png" alt="">
-            </div>
-            <div class="header_btn">
-                <router-link class="register"  to="/DangKy">ĐĂNG KÝ</router-link>
-                <router-link class="login" to="/DangNhap">ĐĂNG NHẬP</router-link>
-            </div>
-        </div>
-    </header>
+            <div class="rightAllProduct">
+                <div class="recommendProducts">
+                    <div class="recommendProduct" :key="index" v-for="(product, index) in products">
+                        <router-link class="link"
+                            :to="{ name: 'ToanBoSanPham.XemChiTiet', params: { id: product._id } }">
+                            <img class="imgProduct" v-bind:src="require(`../${product.image}.jpg`)" alt="">
+                            <div class="nameProduct">{{ product.pname }}</div>
+                            <div class="priceProduct">{{ product.amount }}</div>
+                        </router-link>
 
-    <div class="allProduct">
-    <div class="leftAllProduct">
-        <div class="sidenav">
-            <a href="#">Danh mục</a>
-            <a href="#about">Card</a>
-            <a href="#services">Lightstick</a>
-            <a href="#clients">Album</a>
-            <a href="#contact">Ticket</a>
-        </div>
-    </div>
-    <div class="rightAllProduct">
-        <div class="recommendProducts">
-            <div class="recommendProduct" :key="index" v-for="(product, index) in products">
-                <router-link class="link" :to="{ name:'ToanBoSanPham.XemChiTiet', params: {id: product._id}}">
-                    <img class="imgProduct" v-bind:src ="require(`../${product.image}.jpg`)" alt="">
-                    <div class="nameProduct">{{ product.pname }}</div>
-                    <div class="priceProduct">{{ product.amount }}</div>
-                </router-link>
-                
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
 
     </body>
@@ -85,89 +88,94 @@ export default {
     name: 'ToanBoSanPham',
 
     data() {
-    return{
-        isMouseOver1: false,
-        isMouseOver2: false, 
-        isMouseOver3:false, 
-        isMouseOver4: false,
+        return {
+            isMouseOver1: false,
+            isMouseOver2: false,
+            isMouseOver3: false,
+            isMouseOver4: false,
 
-        imgDefault: true,   
-                    
-        isClick: false,
-        products: [],
-        }   
+            imgDefault: true,
+
+            isClick: false,
+            products: [],
+        }
     },
-    created(){
+    created() {
         this.getAll()
     },
     methods: {
-        handleMouseOver(e, number){ 
-            if(number==1){
-                this.isMouseOver1= true;
-                this.isMouseOver2= false;
-                this.isMouseOver3= false;
-                this.isMouseOver4= false;
-                this.imgDefault= false;      
+        handleMouseOver(e, number) {
+            if (number == 1) {
+                this.isMouseOver1 = true;
+                this.isMouseOver2 = false;
+                this.isMouseOver3 = false;
+                this.isMouseOver4 = false;
+                this.imgDefault = false;
             }
-            else if(number==2){
-                this.isMouseOver1= false;
-                this.isMouseOver2= true;
-                this.isMouseOver3= false;
-                this.isMouseOver4= false
-                this.imgDefault= false;
-            }  
-            else if(number==3){
-                this.isMouseOver1= false;
-                this.isMouseOver2= false;
-                this.isMouseOver3= true;
-                this.isMouseOver4= false
-                this.imgDefault= false;
-            }  
-            else if(number==4){
-                this.isMouseOver1= false;
-                this.isMouseOver2= false;
-                this.isMouseOver3= false;
-                this.isMouseOver4= true
-                this.imgDefault= false;
-            }              
+            else if (number == 2) {
+                this.isMouseOver1 = false;
+                this.isMouseOver2 = true;
+                this.isMouseOver3 = false;
+                this.isMouseOver4 = false
+                this.imgDefault = false;
+            }
+            else if (number == 3) {
+                this.isMouseOver1 = false;
+                this.isMouseOver2 = false;
+                this.isMouseOver3 = true;
+                this.isMouseOver4 = false
+                this.imgDefault = false;
+            }
+            else if (number == 4) {
+                this.isMouseOver1 = false;
+                this.isMouseOver2 = false;
+                this.isMouseOver3 = false;
+                this.isMouseOver4 = true
+                this.imgDefault = false;
+            }
         },
-        handleClickSearch(e){
-            this.isClick= true;
-        }, 
-        handleClickX(e){
-            this.isClick= false;
+        handleClickSearch(e) {
+            this.isClick = true;
         },
-        getAll(){
-            return this.$request.get('http://localhost:5000/product/getAll').then(res =>{
+        handleClickX(e) {
+            this.isClick = false;
+        },
+        getAll() {
+            const PORT = process.env.PORT || 5000;
+            return this.$request.get(`http://localhost:${PORT}/product/getAll`).then(res => {
                 console.log(res.data)
-                this.products= res.data
-            
+                this.products = res.data
+
             })
         },
-       
-    }  
+
+    }
 }
 </script>
 
 <style scoped>
-*{
+* {
     margin: 0;
     padding: 0;
 }
-.detailCart{
+
+.detailCart {
     background-color: #FFFFFF;
     width: 100%;
     height: 200px;
     position: relative;
     top: 99px;
 }
-body{   
+
+body {
     background-color: #F2F2F6;
 }
-header{
+
+header {
     background-color: #FFFFFF;
 }
-header{
+
+header {
     width: 100%;
     height: 95px;
     /*padding: 0 2%;*/
@@ -179,14 +187,16 @@ header{
     left: 0;
     z-index: 1;
 }
-.navigation{
+
+.navigation {
     width: 43%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.navigation>a{
+
+.navigation>a {
     width: 100px;
     text-decoration: none;
     color: black;
@@ -195,14 +205,16 @@ header{
     justify-content: flex-start;
     align-items: center;
     margin-right: 15px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
 }
-.navigation>a:hover{
+
+.navigation>a:hover {
     color: #F47458;
     border-bottom: 1.5px solid #F47458;
 }
-.header_logo{
-    width:7%;
+
+.header_logo {
+    width: 7%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -210,18 +222,21 @@ header{
     padding: 3px 0;
     margin-right: 50px;
 }
-.login-logo{
+
+.login-logo {
     width: 110%;
 
 }
-.header_right{
+
+.header_right {
     width: 40%;
     height: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-#search{
+
+#search {
     width: 50px;
     height: 100%;
     display: flex;
@@ -230,17 +245,20 @@ header{
     flex-direction: column;
     margin-right: 20px;
 }
-.searchIcon{
+
+.searchIcon {
     height: 100%;
     width: 100%;
     background: none;
     border: none;
 }
-.searchIcon>img{
+
+.searchIcon>img {
     width: 25px;
     height: 25px;
 }
-.searchDrop{
+
+.searchDrop {
     background: #FFFFFF;
     position: absolute;
     top: 95px;
@@ -253,49 +271,58 @@ header{
     align-items: center;
     transition: visibility .2s linear;
     visibility: hidden;
-}.groupSearchDrop{
+}
+
+.groupSearchDrop {
     width: 100%;
     display: flex;
     justify-content: center;
 
 }
-.clicked{
+
+.clicked {
     visibility: visible;
 }
-.groupSearchDrop>select{
+
+.groupSearchDrop>select {
     height: 33px;
     width: 150px;
     margin-right: 10px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;
 }
-.searchBtn{
+
+.searchBtn {
     width: 80px;
     height: 33px;
     background-color: #F47458;
     border: none;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;
 }
-.groupSearchDrop>input{
+
+.groupSearchDrop>input {
     height: 30px;
     width: 35%;
     margin-right: 10px;
     padding-left: 5px;
 }
-.cancelSearch{
+
+.cancelSearch {
     width: 100%;
     margin-right: 7%;
     display: flex;
     justify-content: flex-end;
 }
-.cancelSearch>button{
+
+.cancelSearch>button {
     font-size: 25px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     background: none;
     border: none;
 }
-.cart{
+
+.cart {
     position: relative;
     width: 50px;
     height: 100%;
@@ -305,7 +332,7 @@ header{
     margin-right: 20px;
 }
 
-.count_cart{
+.count_cart {
     width: 18px;
     height: 18px;
     font-size: 12px;
@@ -320,7 +347,8 @@ header{
     top: 30px;
     right: 3px;
 }
-.inform{
+
+.inform {
     width: 50px;
     height: 100%;
     display: flex;
@@ -328,18 +356,21 @@ header{
     align-items: center;
     margin-right: 20px;
 }
+
 .imgIcon {
     width: 25px;
     height: 25px;
 }
-.header_btn{
+
+.header_btn {
     width: 40%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.header_btn>a{
+
+.header_btn>a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -349,35 +380,40 @@ header{
     height: 42px;
     border: 1.5px solid black;
     border-radius: 25px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 14px;
 }
-.login{
+
+.login {
     background-color: #F66A55;
 }
-.clickOnHeader{
+
+.clickOnHeader {
     background-color: #FFFFFF;
 }
 
 /* CSS toan bo san pham */
-.allProduct{
+.allProduct {
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.leftAllProduct{
+
+.leftAllProduct {
     width: 18%;
     background-color: #ffffff;
     margin-top: 99px;
     margin-right: 4px;
     margin-bottom: 4px;
 }
-.rightAllProduct{
+
+.rightAllProduct {
     margin-top: 99px;
     margin-bottom: 4px;
     width: 80%;
     background-color: #ffffff;
 }
+
 .sidenav {
     width: 100%;
     overflow-x: hidden;
@@ -391,20 +427,22 @@ header{
     /*color: #818181;*/
     color: #19124F;
     display: block;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
 }
 
 .sidenav a:hover {
     color: #f1f1f1;
     background-color: #19124F;
 }
-.recommendProducts{
+
+.recommendProducts {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
-.recommendProduct{
+
+.recommendProduct {
     width: 220px;
     margin: 15px 15px;
     position: relative;
@@ -412,35 +450,40 @@ header{
     display: flex;
     flex-direction: column;
 }
-.imgProduct{
+
+.imgProduct {
     width: 220px;
     height: 250px;
     border-radius: 3px;
 }
-.nameProduct{
+
+.nameProduct {
     width: 100%;
     height: 47px;
     overflow: hidden;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 20px;
     color: #19124F;
     margin: 7px 0px;
     text-decoration: none;
     text-align: center;
 }
-.priceProduct{
+
+.priceProduct {
     width: 100%;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 22px;
     color: #19124F;
     text-align: center;
     font-weight: bold;
 }
-.recommendProduct:hover{
+
+.recommendProduct:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     top: 0px;
 }
-.link{
+
+.link {
     text-decoration: none;
 }
 </style>

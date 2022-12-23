@@ -1,65 +1,67 @@
 <template>
+
     <body>
-        <header id="header" v-bind:class="{clickOnHeader: isClick}">
-        <div  class="header_logo">
-            <a class="header-img" href="/">
-                <img class="login-logo" src="../components/HinhAnh/Logo/Logo2.png" alt="logo">
+        <header id="header" v-bind:class="{ clickOnHeader: isClick }">
+            <div class="header_logo">
+                <a class="header-img" href="/">
+                    <img class="login-logo" src="../components/HinhAnh/Logo/Logo2.png" alt="logo">
                 </a>
-        </div>
-        <div class="navigation">
-            <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>
-            <router-link class="register" to="/ToanBoSanPham">SẢN PHẨM</router-link>
-            <a href="#" class="nav_auction">DANH MỤC</a>
-            <a href="#" class="nav_auction">GIỚI THIỆU</a>
-            <a href="#" class="how_to_buy">TRỢ GIÚP</a>
-        </div>
-        <div class="header_right">
-            <div id="search">
-                <button class="searchIcon"  @click="handleClickSearch"><img src="../components/HinhAnh/Icon/Search.png" alt=""></button>
-                <div class="searchDrop" v-bind:class="{clicked: isClick}">
-                    <div class="cancelSearch" >
-                        <button @click="handleClickX">X</button>
+            </div>
+            <div class="navigation">
+                <router-link class="register" to="/TrangChu"> TRANG CHỦ</router-link>
+                <router-link class="register" to="/ToanBoSanPham">SẢN PHẨM</router-link>
+                <a href="#" class="nav_auction">DANH MỤC</a>
+                <a href="#" class="nav_auction">GIỚI THIỆU</a>
+                <a href="#" class="how_to_buy">TRỢ GIÚP</a>
+            </div>
+            <div class="header_right">
+                <div id="search">
+                    <button class="searchIcon" @click="handleClickSearch"><img
+                            src="../components/HinhAnh/Icon/Search.png" alt=""></button>
+                    <div class="searchDrop" v-bind:class="{ clicked: isClick }">
+                        <div class="cancelSearch">
+                            <button @click="handleClickX">X</button>
+                        </div>
+                        <div class="groupSearchDrop">
+                            <select name="" id="">
+                                <option value="0">Tất cả</option>
+                                <option value="1">Thẻ bo góc</option>
+                                <option value="2">Lightstick</option>
+                                <option value="3">Poster</option>
+                            </select>
+                            <input type="text" placeholder="Tìm kiếm">
+                            <button class="searchBtn">Tìm kiếm</button>
+                        </div>
+
                     </div>
-                    <div class="groupSearchDrop">
-                        <select name="" id="">
-                        <option value="0">Tất cả</option>
-                        <option value="1">Thẻ bo góc</option>
-                        <option value="2">Lightstick</option>
-                        <option value="3">Poster</option>
-                    </select>
-                    <input type="text" placeholder="Tìm kiếm">
-                    <button class="searchBtn">Tìm kiếm</button>
+
+                </div>
+                <div class="cart">
+                    <router-link class="register" to="/GioHang">
+                        <img class="imgIcon" src="../components/HinhAnh/Icon/Cart.png" alt="">
+                        <div class="count_cart">0</div>
+                    </router-link>
+                </div>
+                <div class="inform">
+                    <img src="../components/HinhAnh/Icon/Bell.png" alt="">
+                </div>
+                <div class="header_btn">
+                    <router-link class="register" to="/DangKy">ĐĂNG KÝ</router-link>
+                    <router-link class="login" to="/DangNhap">ĐĂNG NHẬP</router-link>
+                </div>
+            </div>
+        </header>
+        <div class="details">
+            <div class="leftDetail">
+                <div class="gallery">
+                    <div class="container">
+                        <div class="mySlide">
+                            <img v-bind:src="require(`../${product.image}.jpg`)" alt="">
+                        </div>
                     </div>
-                    
                 </div>
 
-            </div>
-            <div class="cart">
-                <router-link class="register" to="/GioHang">
-                    <img class="imgIcon" src="../components/HinhAnh/Icon/Cart.png" alt="">
-                    <div class="count_cart">0</div>
-                </router-link>
-            </div>
-            <div class="inform">
-                <img src="../components/HinhAnh/Icon/Bell.png" alt="">
-            </div>
-            <div class="header_btn">
-                <router-link class="register"  to="/DangKy">ĐĂNG KÝ</router-link>
-                <router-link class="login" to="/DangNhap">ĐĂNG NHẬP</router-link>
-            </div>
-        </div>
-    </header>
-    <div class="details">
-      <div class="leftDetail">
-          <div class="gallery">
-              <div class="container">
-                            <div class="mySlide">
-                                <img v-bind:src ="require(`../${product.image}.jpg`)" alt="">
-                            </div>
-              </div>
-          </div>
-        
-          <!-- <div class="detailProduct">
+                <!-- <div class="detailProduct">
               <p class="descriptTitle">Chi tiết sản phẩm:</p>
               <ul>
                   <li>Số lượng: 15</li>
@@ -67,103 +69,103 @@
                   <li>Gửi từ: Thành phố Hồ Chí Minh</li>
               </ul>
           </div> -->
-          <div class="description">
-              <p class="descriptTitle">Mô tả sản phẩm:</p>
-              <p class="descriptContent">{{ product.pdesc }}</p>
-          </div>
-      </div>
-      <div class="centerDetail">
-
-              <div class="name">{{ product.pname }} </div>
-              <div class="bidCount">3 đã đấu giá</div>
-              <div class="timeLeft">
-                  <p><span>Thời gian: </span>{{ product.time }}</p>                
-
-                  <div class="bid">Giá khởi điểm:
-                      <div class="price">{{ product.amount }}</div>
-                      <div class="placeBid"><input type="text" placeholder="Mức giá/ 1 sản phẩm..."></div>
-                      <!--                  <div class="instruction">*Giá đặt ra phải lớn hơn hoặc bằng giá khởi điểm</div>-->
-                      <div class="Qty">
-                          <div class="labelQty">Số lượng:</div>
-                          <div class="buyQty">
-                              <button class="substractBtn">-</button>
-                              <div>1</div>
-                              <button class="plusBtn">+</button>
-                          </div>
-                      </div>
-                      <div class="Btn"><button class="largeBtn placeBidBtn">Đấu giá</button></div>
-                      <div class="Btn"><button class="largeBtn add2CartBtn">Thêm vào giỏ hàng</button></div>
-                  </div>
-              </div>
-
-          <div class="shop">
-              <div class="shopProfile">
-                  <span class="profileIcon"><img src="../components/HinhAnh/Icon/Profile.png" alt=""></span>
-                  <span class="shopName">{{ product.author }}</span>
-              </div>
-              <div class="shopRate_Flow">
-                  <div class="shopRate">
-                      <div>
-                          <span class="avgRate">0/5</span>
-                          <span class="fa fa-star checked"></span>
-                      </div>
-                      <span class="titleFlow">4+</span>
-                  </div>
-                  <div class="shopFlow">
-                      <span class="amountFlow">0</span>
-                      <span class="titleFlow">Sản phẩm</span>
-<!--                      <button class="shopBtn">Theo dõi</button>-->
-                  </div>
-              </div>
-              <div class="btnFlow">
-                  <button class="shopBtn">Xem shop</button>
-              </div>
-              <div class="shopGuarantees">
-                  <div class="shopGuarantee">
-                      <img src="../components/HinhAnh/Icon/Like.png" alt="">
-                      <span>Hoàn tiền 100% nêu hàng giả</span>
-                  </div>
-                  <div class="shopGuarantee">
-                      <img src="../components/HinhAnh/Icon/Check.png" alt="">
-                      <span>Mở hộp kiểm tra nhận hàng</span>
-                  </div>
-                  <div class="shopGuarantee">
-                      <img src="../components/HinhAnh/Icon/Convert.png" alt="">
-                      <span>Trả hàng trong 7 ngày nếu lỗi</span>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div>
-    <div class="feedBack">
-        <div class="left_feedBack">
-        </div>
-        <div class="right_feedBack">
-            <div class="fBackTitle">
-                <div class="middle">Đánh giá chi tiết</div>
+                <div class="description">
+                    <p class="descriptTitle">Mô tả sản phẩm:</p>
+                    <p class="descriptContent">{{ product.pdesc }}</p>
+                </div>
             </div>
-            
-            <div class="userFBack">
-                <div class="userInfo" >
-                    <div class="userName">Đỗ Trung Đức</div>
-                    <div class="starRate">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
+            <div class="centerDetail">
+
+                <div class="name">{{ product.pname }} </div>
+                <div class="bidCount">3 đã đấu giá</div>
+                <div class="timeLeft">
+                    <p><span>Thời gian: </span>{{ product.time }}</p>
+
+                    <div class="bid">Giá khởi điểm:
+                        <div class="price">{{ product.amount }}</div>
+                        <div class="placeBid"><input type="text" placeholder="Mức giá/ 1 sản phẩm..."></div>
+                        <!--                  <div class="instruction">*Giá đặt ra phải lớn hơn hoặc bằng giá khởi điểm</div>-->
+                        <div class="Qty">
+                            <div class="labelQty">Số lượng:</div>
+                            <div class="buyQty">
+                                <button class="substractBtn">-</button>
+                                <div>1</div>
+                                <button class="plusBtn">+</button>
+                            </div>
+                        </div>
+                        <div class="Btn"><button class="largeBtn placeBidBtn">Đấu giá</button></div>
+                        <div class="Btn"><button class="largeBtn add2CartBtn">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
-                <div class="contentFBack">
-                    <div class="leftIcon">+</div>
-                    <div class="middleContent">Good</div>
-                    <div class="rightDate">15/02/2022</div>
+
+                <div class="shop">
+                    <div class="shopProfile">
+                        <span class="profileIcon"><img src="../components/HinhAnh/Icon/Profile.png" alt=""></span>
+                        <span class="shopName">{{ product.author }}</span>
+                    </div>
+                    <div class="shopRate_Flow">
+                        <div class="shopRate">
+                            <div>
+                                <span class="avgRate">0/5</span>
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <span class="titleFlow">4+</span>
+                        </div>
+                        <div class="shopFlow">
+                            <span class="amountFlow">0</span>
+                            <span class="titleFlow">Sản phẩm</span>
+                            <!--                      <button class="shopBtn">Theo dõi</button>-->
+                        </div>
+                    </div>
+                    <div class="btnFlow">
+                        <button class="shopBtn">Xem shop</button>
+                    </div>
+                    <div class="shopGuarantees">
+                        <div class="shopGuarantee">
+                            <img src="../components/HinhAnh/Icon/Like.png" alt="">
+                            <span>Hoàn tiền 100% nêu hàng giả</span>
+                        </div>
+                        <div class="shopGuarantee">
+                            <img src="../components/HinhAnh/Icon/Check.png" alt="">
+                            <span>Mở hộp kiểm tra nhận hàng</span>
+                        </div>
+                        <div class="shopGuarantee">
+                            <img src="../components/HinhAnh/Icon/Convert.png" alt="">
+                            <span>Trả hàng trong 7 ngày nếu lỗi</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="feedBack">
+            <div class="left_feedBack">
+            </div>
+            <div class="right_feedBack">
+                <div class="fBackTitle">
+                    <div class="middle">Đánh giá chi tiết</div>
+                </div>
+
+                <div class="userFBack">
+                    <div class="userInfo">
+                        <div class="userName">Đỗ Trung Đức</div>
+                        <div class="starRate">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </div>
+                    <div class="contentFBack">
+                        <div class="leftIcon">+</div>
+                        <div class="middleContent">Good</div>
+                        <div class="rightDate">15/02/2022</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
-  
+
 </template>
 
 <script>
@@ -171,88 +173,92 @@ export default {
     name: 'SanPham',
 
     data() {
-    return{
-        isMouseOver1: false,
-        isMouseOver2: false, 
-        isMouseOver3:false, 
-        isMouseOver4: false,
+        return {
+            isMouseOver1: false,
+            isMouseOver2: false,
+            isMouseOver3: false,
+            isMouseOver4: false,
 
-        imgDefault: true,   
-                    
-        isClick: false,
+            imgDefault: true,
 
-        product: {},
-        
-        }   
+            isClick: false,
+
+            product: {},
+
+        }
     },
-    created(){
-        let productId= this.$route.params.id
-      
-        if(productId){
+    created() {
+        let productId = this.$route.params.id
+
+        if (productId) {
             this.getProduct(productId);
         }
-        
+
     },
     methods: {
-        handleMouseOver(e, number){ 
-            if(number==1){
-                this.isMouseOver1= true;
-                this.isMouseOver2= false;
-                this.isMouseOver3= false;
-                this.isMouseOver4= false;
-                this.imgDefault= false;      
+        handleMouseOver(e, number) {
+            if (number == 1) {
+                this.isMouseOver1 = true;
+                this.isMouseOver2 = false;
+                this.isMouseOver3 = false;
+                this.isMouseOver4 = false;
+                this.imgDefault = false;
             }
-            else if(number==2){
-                this.isMouseOver1= false;
-                this.isMouseOver2= true;
-                this.isMouseOver3= false;
-                this.isMouseOver4= false
-                this.imgDefault= false;
-            }  
-            else if(number==3){
-                this.isMouseOver1= false;
-                this.isMouseOver2= false;
-                this.isMouseOver3= true;
-                this.isMouseOver4= false
-                this.imgDefault= false;
-            }  
-            else if(number==4){
-                this.isMouseOver1= false;
-                this.isMouseOver2= false;
-                this.isMouseOver3= false;
-                this.isMouseOver4= true
-                this.imgDefault= false;
-            }              
+            else if (number == 2) {
+                this.isMouseOver1 = false;
+                this.isMouseOver2 = true;
+                this.isMouseOver3 = false;
+                this.isMouseOver4 = false
+                this.imgDefault = false;
+            }
+            else if (number == 3) {
+                this.isMouseOver1 = false;
+                this.isMouseOver2 = false;
+                this.isMouseOver3 = true;
+                this.isMouseOver4 = false
+                this.imgDefault = false;
+            }
+            else if (number == 4) {
+                this.isMouseOver1 = false;
+                this.isMouseOver2 = false;
+                this.isMouseOver3 = false;
+                this.isMouseOver4 = true
+                this.imgDefault = false;
+            }
         },
-        handleClickSearch(e){
-            this.isClick= true;
-        }, 
-        handleClickX(e){
-            this.isClick= false;
+        handleClickSearch(e) {
+            this.isClick = true;
         },
-        getProduct(productId){
-            this.$request.get(`http://localhost:5000/product/getOne/${productId}`).then(res =>{
+        handleClickX(e) {
+            this.isClick = false;
+        },
+        getProduct(productId) {
+            const PORT = process.env.PORT || 5000;
+            this.$request.get(`http://localhost:${PORT}/product/getOne/${productId}`).then(res => {
                 this.product = res.data
                 console.log(this.product)
             })
         },
-        
-    }    
+
+    }
 }
 </script>
 
 <style scoped>
-*{
+* {
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     background-color: #F2F2F6;
 }
-header{
+
+header {
     background-color: #FFFFFF;
 }
-header{
+
+header {
     width: 100%;
     height: 95px;
     /*padding: 0 2%;*/
@@ -264,14 +270,16 @@ header{
     left: 0;
     z-index: 1;
 }
-.navigation{
+
+.navigation {
     width: 43%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.navigation>a{
+
+.navigation>a {
     width: 100px;
     text-decoration: none;
     color: black;
@@ -280,14 +288,16 @@ header{
     justify-content: flex-start;
     align-items: center;
     margin-right: 15px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
 }
-.navigation>a:hover{
+
+.navigation>a:hover {
     color: #F47458;
     border-bottom: 1.5px solid #F47458;
 }
-.header_logo{
-    width:7%;
+
+.header_logo {
+    width: 7%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -295,18 +305,21 @@ header{
     padding: 3px 0;
     margin-right: 50px;
 }
-.login-logo{
+
+.login-logo {
     width: 110%;
 
 }
-.header_right{
+
+.header_right {
     width: 40%;
     height: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-#search{
+
+#search {
     width: 50px;
     height: 100%;
     display: flex;
@@ -315,17 +328,20 @@ header{
     flex-direction: column;
     margin-right: 20px;
 }
-.searchIcon{
+
+.searchIcon {
     height: 100%;
     width: 100%;
     background: none;
     border: none;
 }
-.searchIcon>img{
+
+.searchIcon>img {
     width: 25px;
     height: 25px;
 }
-.searchDrop{
+
+.searchDrop {
     background: #FFFFFF;
     position: absolute;
     top: 95px;
@@ -338,49 +354,58 @@ header{
     align-items: center;
     transition: visibility .2s linear;
     visibility: hidden;
-}.groupSearchDrop{
+}
+
+.groupSearchDrop {
     width: 100%;
     display: flex;
     justify-content: center;
 
 }
-.clicked{
+
+.clicked {
     visibility: visible;
 }
-.groupSearchDrop>select{
+
+.groupSearchDrop>select {
     height: 33px;
     width: 150px;
     margin-right: 10px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;
 }
-.searchBtn{
+
+.searchBtn {
     width: 80px;
     height: 33px;
     background-color: #F47458;
     border: none;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;
 }
-.groupSearchDrop>input{
+
+.groupSearchDrop>input {
     height: 30px;
     width: 35%;
     margin-right: 10px;
     padding-left: 5px;
 }
-.cancelSearch{
+
+.cancelSearch {
     width: 100%;
     margin-right: 7%;
     display: flex;
     justify-content: flex-end;
 }
-.cancelSearch>button{
+
+.cancelSearch>button {
     font-size: 25px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     background: none;
     border: none;
 }
-.cart{
+
+.cart {
     position: relative;
     width: 50px;
     height: 100%;
@@ -389,11 +414,13 @@ header{
     align-items: center;
     margin-right: 20px;
 }
+
 .imgIcon {
     width: 25px;
     height: 25px;
 }
-.count_cart{
+
+.count_cart {
     width: 18px;
     height: 18px;
     font-size: 12px;
@@ -408,7 +435,8 @@ header{
     top: 30px;
     right: 3px;
 }
-.inform{
+
+.inform {
     width: 50px;
     height: 100%;
     display: flex;
@@ -416,18 +444,21 @@ header{
     align-items: center;
     margin-right: 20px;
 }
-.inform>img{
+
+.inform>img {
     width: 25px;
     height: 25px;
 }
-.header_btn{
+
+.header_btn {
     width: 40%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.header_btn>a{
+
+.header_btn>a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -437,121 +468,143 @@ header{
     height: 42px;
     border: 1.5px solid black;
     border-radius: 25px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 14px;
 }
-.login{
+
+.login {
     background-color: #F66A55;
 }
-.clickOnHeader{
+
+.clickOnHeader {
     background-color: #FFFFFF;
 }
+
 /*CSS Details Product*/
-.details{
+.details {
     margin-top: 98px;
     width: auto;
     display: flex;
     justify-content: center;
 }
+
 /*CSS left details*/
-.leftDetail{
+.leftDetail {
     width: 65%;
     background-color: #FFFFFF;
     margin-top: 3px;
     margin-right: 3px;
     border-radius: 3px;
 }
-.gallery{
+
+.gallery {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.container{
+
+.container {
     width: 100%;
     height: 600px;
     position: relative;
     background-color: #FFFFFF;
 }
 
-.prev, .next{
+.prev,
+.next {
     font-size: 38px;
 }
-.prev{
+
+.prev {
     margin-right: 5px;
 }
-.next{
+
+.next {
     margin-left: 5px;
 }
 
-.mySlide{
+.mySlide {
     width: 100%;
     height: 100%;
 }
-.mySlide>img{
+
+.mySlide>img {
     width: 100%;
     height: 600px;
     border-radius: 3px;
 }
-.row{
+
+.row {
     margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.column{
+
+.column {
     margin: 0 10px;
 }
-.column>img{
+
+.column>img {
     width: 50px;
     height: 50px;
 }
+
 /*CSS center detail*/
-.centerDetail{
+.centerDetail {
     margin-top: 4px;
     width: 35%;
     padding: 40px 30px;
     background-color: #ffffff;
     min-height: 800px;
 }
-.name{
+
+.name {
     width: 100%;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     /*color: #F47458;*/
     color: #19124F;
     font-size: 24px;
 
 }
-.checked{
+
+.checked {
     color: orange;
 }
-.rate_bidCount{
+
+.rate_bidCount {
     display: flex;
     margin-top: 10px;
 }
-.timeLeft{
+
+.timeLeft {
     margin-top: 10px;
     padding-top: 10px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 14px;
     color: #19124F;
 }
-.timeLeft>p{
+
+.timeLeft>p {
     margin-top: 8px;
     font-size: 16px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
 }
-.timeLeft>p>span{
+
+.timeLeft>p>span {
     font-size: 16px;
 }
-.bid{
+
+.bid {
     position: relative;
     margin-top: 20px;
     padding-top: 10px;
     font-size: 16px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
 }
-.price{
+
+.price {
     color: #F66A55;
     font-size: 28px;
     position: absolute;
@@ -559,44 +612,52 @@ header{
     left: 110px;
 
 }
-.placeBid{
+
+.placeBid {
     padding-top: 25px;
     margin-top: 30px;
     display: flex;
     justify-content: center;
 }
-.bidQty{
+
+.bidQty {
     padding-top: 10px;
     padding-left: 30px;
 }
-.placeBid>input{
+
+.placeBid>input {
     border: 1.5px solid gray;
     border-radius: 3px;
     height: 40px;
     width: 95%;
     padding: 0 5px;
 }
-.instruction{
+
+.instruction {
     margin-top: 5px;
     padding-left: 10px;
     color: red;
 }
-.bid>input::placeholder{
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+
+.bid>input::placeholder {
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
 }
-.bidCount{
+
+.bidCount {
     font-size: 14px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     color: #19124F;
     margin-top: 20px;
     padding-left: 5px;
 }
-.Btn{
+
+.Btn {
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.largeBtn{
+
+.largeBtn {
     width: 95%;
     height: 45px;
     border: none;
@@ -605,28 +666,33 @@ header{
     color: #07002F;
     font-weight: bold;
 }
-.placeBidBtn{
+
+.placeBidBtn {
     margin-top: 40px;
     background-color: #F66A55;
 }
-.Qty{
+
+.Qty {
     display: flex;
     margin-top: 40px;
     margin-left: 10px;
 }
-.labelQty{
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+
+.labelQty {
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 14px;
     margin-right: 15px;
 }
-.buyQty{
+
+.buyQty {
     height: 20px;
     width: fit-content;
     display: flex;
     border: 1px solid gray;
 }
 
-.plusBtn, .substractBtn{
+.plusBtn,
+.substractBtn {
     width: 20px;
     display: flex;
     justify-content: center;
@@ -636,105 +702,126 @@ header{
     border: none;
     color: #F47458;
 }
-.substractBtn{
+
+.substractBtn {
     border-right: 1px solid gray;
 }
-.buyQty>div{
+
+.buyQty>div {
     width: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.plusBtn{
+
+.plusBtn {
     border-left: 1px solid gray;
 }
 
-.add2CartBtn{
+.add2CartBtn {
     margin-top: 15px;
     background-color: #FFAC75;
 }
+
 /*CSS right details*/
-.rightDetail{
+.rightDetail {
     width: 350px;
     height: 400px;
 }
-.detailProduct{
+
+.detailProduct {
     margin-top: 50px;
     margin-left: 5px;
 }
-.detailProduct>ul{
+
+.detailProduct>ul {
     padding-left: 25px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;
     color: #19124F;
 }
-.description{
+
+.description {
     width: 100%;
     margin-top: 15px;
     margin-left: 5px;
 }
-.descriptTitle{
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+
+.descriptTitle {
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 18px;
     font-weight: bold;
     color: #19124F;
 }
-.descriptContent{
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+
+.descriptContent {
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;
     color: #19124F;
 }
 
 /*CSS Feedback*/
-.feedBack{
+.feedBack {
     width: 100%;
     display: flex;
 }
-.left_feedBack{
+
+.left_feedBack {
     width: 35%;
     margin-top: 13px;
     margin-right: 3px;
     background-color: #FFFFFF;
 }
-.right_feedBack{
+
+.right_feedBack {
     width: 65%;
     margin-top: 13px;
     background-color: #FFFFFF;
     padding: 2% 2%;
 }
-.fBackTitle{
+
+.fBackTitle {
     width: 100%;
     padding-bottom: 30px;
     display: flex;
 }
-.middle{
+
+.middle {
     font-size: 20px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     color: #19124F;
 }
-.line{
+
+.line {
     width: 35%;
     height: 0px;
     border-bottom: 1px solid #000000;
 }
-.userFBack{
+
+.userFBack {
     border-bottom: 1px solid #000000;
     padding-bottom: 10px;
     margin-bottom: 15px;
 }
-.userInfo{
+
+.userInfo {
     display: flex;
     align-items: center;
 }
-.userName,.middleContent, .rightDate{
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+
+.userName,
+.middleContent,
+.rightDate {
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;
 }
-.userName{
+
+.userName {
     padding-right: 15px;
     padding-left: 25px;
 }
-.leftIcon{
+
+.leftIcon {
     width: 18px;
     height: 18px;
     font-size: 18px;
@@ -746,14 +833,17 @@ header{
     align-items: center;
     margin-right: 10px;
 }
-.contentFBack{
+
+.contentFBack {
     display: flex;
     align-items: center;
     margin-top: 5px;
 }
-.middleContent{
+
+.middleContent {
     width: 90%;
 }
+
 .shop {
     width: 100%;
     height: 200px;
@@ -762,35 +852,40 @@ header{
     border-top: 3px solid #F2F2F6;
     margin: 30px 30px;
 }
-.shopProfile{
+
+.shopProfile {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin-top: 30px;
 }
-.profileIcon{
+
+.profileIcon {
     margin-right: 7px;
 }
-.profileIcon>img{
+
+.profileIcon>img {
     width: 40px;
     height: 40px;
 }
-.shopName{
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+
+.shopName {
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;
     color: #19124F;
     font-weight: bold;
 }
-.shopRate_Flow
-{
+
+.shopRate_Flow {
     display: flex;
     justify-content: center;
 }
-.shopRate{
+
+.shopRate {
     width: 35%;
     border-right: 1.5px solid #D6DADF;
     margin-right: 15px;
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -798,23 +893,27 @@ header{
     padding-right: 15px;
 }
 
-.shopFlow{
+.shopFlow {
     width: 35%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
-.avgRate, .amountFlow{
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+
+.avgRate,
+.amountFlow {
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;
     font-weight: bold;
 }
-.titleFlow{
+
+.titleFlow {
     color: #9695A8;
     font-size: 16px;
 }
-.shopBtn{
+
+.shopBtn {
     width: 80px;
     height: 25px;
     border: 1.5px solid #F66A55;
@@ -823,13 +922,15 @@ header{
     color: #F66A55;
     margin-top: 25px;
 }
-.shopGuarantees{
+
+.shopGuarantees {
     width: 100%;
     display: flex;
     justify-content: space-around;
     margin-top: 50px;
 }
-.shopGuarantee{
+
+.shopGuarantee {
     width: 25%;
     display: flex;
     justify-content: center;
@@ -837,18 +938,21 @@ header{
     align-items: center;
 
 }
-.shopGuarantee>img{
+
+.shopGuarantee>img {
     width: 35px;
     height: 35px;
 }
-.shopGuarantee>span{
-    font-family: Graphik Web,Helvetica Neue,Helvetica,Arial,Verdana,sans-serif;
+
+.shopGuarantee>span {
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;
     font-size: 14px;
     color: #19124F;
     margin-top: 5px;
     width: 80%;
 }
-.btnFlow{
+
+.btnFlow {
     width: 100%;
     display: flex;
     justify-content: center;
